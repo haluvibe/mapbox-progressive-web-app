@@ -19,7 +19,7 @@ function Camera() {
           return;
         }
         setCamera(videoCameras);
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: videoCameras[videoCameras.length - 1].deviceId } });
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
         const video = videoRef.current;
         video.srcObject = stream;
         await video.play();
@@ -30,6 +30,7 @@ function Camera() {
 
     startCamera();
   }, []);
+
 
   const takePhoto = useCallback(() => {
     try {
