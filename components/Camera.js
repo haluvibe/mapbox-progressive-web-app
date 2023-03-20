@@ -1,41 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 
 function Camera() {
   const [photo, setPhoto] = useState(null);
   const [error, setError] = useState(null);
+  const [camera, setCamera] = useState(null);
+  const videoRef = useRef(null);
 
-  async function takePhoto() {
+  useEffect(() => {
+    async function startCamera() {
+      try {
+        const cameras = await navigator.mediaDevices.enumerateDevices();
+        const videoCameras = cameras.filter(camera => camera.kind === 'videoinput');
+        if (videoCameras.length === 0) {
+          setError(new Error('No camera available'));
+          return;
+        }
+        setCamera(videoCameras);
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: videoCameras[0].deviceId } });
+        const video = videoRef.current;
+        video.srcObject = stream;
+        await video.play();
+      } catch (error) {
+        setError(error);
+      }
+    }
+
+    startCamera();
+  }, []);
+
+  const takePhoto = useCallback(async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      const camera = document.querySelector('#camera');
-      camera.srcObject = stream;
-      await camera.play();
-
-      const track = stream.getVideoTracks()[0];
+      const track = videoRef.current.srcObject.getVideoTracks()[0];
       const imageCapture = new ImageCapture(track);
-
       const blob = await imageCapture.takePhoto();
       setPhoto(blob);
     } catch (error) {
       setError(error);
     }
-  }
+  }, []);
 
-  if ('mediaDevices' in navigator && 'ImageCapture' in window) {
+  const switchCamera = useCallback(async () => {
+    try {
+      const currentCameraIndex = camera.findIndex(cam => cam.deviceId === videoRef.current.srcObject.getVideoTracks()[0].getSettings().deviceId);
+      const nextCameraIndex = (currentCameraIndex + 1) % camera.length;
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: camera[nextCameraIndex].deviceId } });
+      const video = videoRef.current;
+      video.srcObject = stream;
+      await video.play();
+    } catch (error) {
+      setError(error);
+    }
+  }, [camera]);
+
+  if (error) {
+    return <p>Error accessing camera: {error.message}</p>;
+  } else if (!camera) {
+    return <p>Loading camera...</p>;
+  } else {
+    const showSwitchCameraButton = camera.length > 1;
     return (
       <div>
         <button onClick={takePhoto}>Take photo</button>
-        <video id="camera"></video>
+        {showSwitchCameraButton && <button onClick={switchCamera}>Switch front/rear camera</button>}
+        <video id="camera" ref={videoRef} playsInline autoPlay muted></video>
         {photo && <img src={URL.createObjectURL(photo)} alt="captured" />}
-        {error && <p>Error accessing camera: {error.message}</p>}
       </div>
     );
-  } else {
-    return <p>The Image Capture API is not supported.</p>;
   }
 }
 
 export default Camera;
-
-
-
