@@ -31,12 +31,17 @@ function Camera() {
     startCamera();
   }, []);
 
-  const takePhoto = useCallback(async () => {
+  const takePhoto = useCallback(() => {
     try {
-      const track = videoRef.current.srcObject.getVideoTracks()[0];
-      const imageCapture = new ImageCapture(track);
-      const blob = await imageCapture.takePhoto();
-      setPhoto(blob);
+      const video = videoRef.current;
+      const canvas = document.createElement('canvas');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      canvas.toBlob(blob => {
+        setPhoto(blob);
+      }, 'image/jpeg');
     } catch (error) {
       setError(error);
     }
