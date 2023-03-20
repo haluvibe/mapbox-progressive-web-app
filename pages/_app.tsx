@@ -1,6 +1,9 @@
-import Head from 'next/head'
-import '../styles/globals.css'
-import { AppProps } from 'next/app'
+import Head from "next/head";
+import { AppProps } from "next/app";
+import { ThemeProvider } from "../src/theming/ThemeProvider";
+import { CssBaseline } from "@mui/material";
+import { ThemeSelectionProvider } from "../src/theming/ThemeSelectionProvider";
+import { backwardsCompatibleThemes } from "../src/theming/themes";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -32,7 +35,15 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
       </Head>
-      <Component {...pageProps} />
+      <ThemeSelectionProvider
+        availableThemes={backwardsCompatibleThemes}
+        defaultTheme={"light"}
+      >
+        <ThemeProvider>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </ThemeSelectionProvider>
     </>
-  )
+  );
 }
