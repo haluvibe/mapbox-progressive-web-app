@@ -1,0 +1,279 @@
+{
+  "typography": {
+    "htmlFontSize": 16,
+    "fontFamily": "inter",
+    "fontSize": 14,
+    "fontWeightLight": 300,
+    "fontWeightRegular": 400,
+    "fontWeightMedium": 500,
+    "fontWeightBold": 700,
+    "h1": {
+      "fontSize": "38px",
+      "lineHeight": "50px",
+      "letterSpacing": "-0.15px",
+      "fontFamily": "inter",
+      "fontWeight": 600,
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0,
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "h2": {
+      "fontFamily": "inter",
+      "fontWeight": 600,
+      "lineHeight": "2.5rem",
+      "fontSize": "2rem",
+      "letterSpacing": "-0.009375rem",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0,
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "h3": {
+      "fontFamily": "inter",
+      "fontWeight": 400,
+      "lineHeight": "2rem",
+      "fontSize": "1.75rem",
+      "letterSpacing": "-0.009375rem",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0,
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "h4": {
+      "fontFamily": "inter",
+      "fontWeight": 400,
+      "lineHeight": "1.875rem",
+      "fontSize": "1.5rem",
+      "letterSpacing": "-0.009375rem",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0,
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "h5": {
+      "fontFamily": "inter",
+      "fontWeight": 600,
+      "lineHeight": "1.75rem",
+      "fontSize": "1.25rem",
+      "letterSpacing": "-0.009375rem",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0,
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "h6": {
+      "fontFamily": "inter",
+      "fontWeight": 400,
+      "lineHeight": "1.5rem",
+      "fontSize": "1.125rem",
+      "letterSpacing": "-0.009375rem",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0,
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "body1": {
+      "fontFamily": "roboto",
+      "fontWeight": 400,
+      "lineHeight": "1.5rem",
+      "fontSize": "1rem",
+      "letterSpacing": "0.009375rem",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0,
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "body2": {
+      "fontFamily": "roboto",
+      "fontWeight": 400,
+      "lineHeight": "1.375rem",
+      "fontSize": "0.875rem",
+      "letterSpacing": "0.009375rem",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0,
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "subtitle1": {
+      "fontFamily": "roboto",
+      "fontWeight": 400,
+      "lineHeight": "1.75rem",
+      "fontSize": "1rem",
+      "letterSpacing": "0.009375rem",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0,
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "subtitle2": {
+      "fontFamily": "roboto",
+      "fontWeight": 500,
+      "lineHeight": "1.375rem",
+      "fontSize": "0.875rem",
+      "letterSpacing": "0.009375rem",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0,
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "caption": {
+      "fontFamily": "roboto",
+      "fontWeight": 400,
+      "lineHeight": "0.875rem",
+      "fontSize": "0.75rem",
+      "letterSpacing": "0.025rem",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0,
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "overline": {
+      "fontFamily": "roboto",
+      "fontWeight": 400,
+      "lineHeight": "2rem",
+      "fontSize": "0.75rem",
+      "letterSpacing": "0.0625rem",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0,
+      "textCase": "uppercase",
+      "textDecoration": "none"
+    }
+  },
+  "shape": {
+    "borderRadius": 4
+  },
+  "palette": {
+    "mode": "light",
+    "primary": {
+      "main": "#06629d",
+      "light": "#387ab7",
+      "dark": "#044873",
+      "contrastText": "#ffffff"
+    },
+    "secondary": {
+      "main": "#00696e",
+      "light": "#00848a",
+      "dark": "#004d51",
+      "contrastText": "#ffffff"
+    },
+    "error": {
+      "main": "#be0909",
+      "light": "#d24444",
+      "dark": "#8e0606",
+      "contrastText": "#ffffff"
+    },
+    "info": {
+      "main": "#36637b",
+      "light": "#447d9c",
+      "dark": "#27495b",
+      "contrastText": "#ffffff"
+    },
+    "warning": {
+      "main": "#7c571f",
+      "light": "#9c6d27",
+      "dark": "#5b4017",
+      "contrastText": "#ffffff"
+    },
+    "success": {
+      "main": "#326a26",
+      "light": "#3f8630",
+      "dark": "#254e1c",
+      "contrastText": "#ffffff"
+    },
+    "coolGrey": {
+      "main": "#343a3f",
+      "light": "#4d5358",
+      "dark": "#21272a",
+      "contrastText": "#ffffff"
+    },
+    "action": {
+      "active": "#0000008a",
+      "hover": "#0000000a",
+      "selected": "#00000014",
+      "disabled": "#00000042",
+      "disabledBackground": "#0000001f",
+      "focus": "#0000001f"
+    },
+    "background": {
+      "default": "#fcfcfc",
+      "paper": "#ffffff"
+    },
+    "text": {
+      "primary": "#000000e6",
+      "secondary": "#00000099",
+      "disabled": "#00000066"
+    },
+    "divider": "#0000001f"
+  },
+  "sizes": {
+    "XS": "0.5rem",
+    "SM": "0.75rem",
+    "MD": "1rem",
+    "LG": "1.5rem",
+    "XL": "2rem"
+  },
+  "breakpoints": {
+    "values": {
+      "xs": 0,
+      "sm": 600,
+      "md": 960,
+      "lg": 1280,
+      "xl": 1920
+    }
+  },
+  "statusColours": {
+    "draft": "#989898",
+    "submitted": "#779bc6",
+    "issued": "#5fa952",
+    "onHold": "#c88c33",
+    "closed": "#db7e7e",
+    "assessment": "#a2a9b0",
+    "requestedInfo": "#3f8630",
+    "active": "#5fa952",
+    "archived": "#303030",
+    "migrated": "#29a7af",
+    "activated": "#5fa952",
+    "deactivated": "#d24444",
+    "awaitingActivation": "#06629d",
+    "awaitingAcceptance": "#e29e39"
+  },
+  "mapBox": {
+    "primary": "#092242",
+    "secondary": "#06629d",
+    "secondaryHover": "#044873",
+    "info": "#74b3d8",
+    "action": "#29a7af",
+    "accent": "#e29e39",
+    "darkAccent": "#c88c33",
+    "success": "#5fa952",
+    "positive": "#ebf2ea",
+    "error": "#be0909",
+    "warning": "#f3dada",
+    "tint1": "#15355e",
+    "tint2": "#224470",
+    "tint3": "#4e6d8f",
+    "tint4": "#7c9bb3",
+    "tint5": "#a6bdce",
+    "tint6": "#d7e3e9",
+    "tint7": "#e8eff2",
+    "tint8": "#f1f5f7",
+    "tint9": "#dde5e9",
+    "disabled": "#c1c7cd",
+    "pink": "#df6dd7",
+    "darkPink": "#b251ac",
+    "green": "#5fa952",
+    "statusPublished": "#29722c",
+    "gray": "#dde1e6",
+    "networkApproved": "#49bf31",
+    "networkApprovedWithCondition": "#f8a72d",
+    "networkRestricted": "#d10a0a",
+    "statusRoads": "#A8B8C2",
+    "unmanagedRoads": "#fca1f6",
+    "white": "#ffffff",
+    "statusNew": "#0f6dcc",
+    "statusPendingUpdate": "#ff8c0b",
+    "archived": "#303030"
+  },
+  "components": {}
+}

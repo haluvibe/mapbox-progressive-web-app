@@ -1,0 +1,948 @@
+{
+  "theme": {
+    "typography": {
+      "elements": {
+        "h1": {
+          "value": {
+            "fontFamily": "inter",
+            "fontWeight": 300,
+            "lineHeight": "40px",
+            "fontSize": "32px",
+            "letterSpacing": "-0.15px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "h2": {
+          "value": {
+            "fontFamily": "inter",
+            "fontWeight": 300,
+            "lineHeight": "32px",
+            "fontSize": "28px",
+            "letterSpacing": "-0.15px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "h3": {
+          "value": {
+            "fontFamily": "inter",
+            "fontWeight": 300,
+            "lineHeight": "30px",
+            "fontSize": "24px",
+            "letterSpacing": "-0.15px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "h4": {
+          "value": {
+            "fontFamily": "inter",
+            "fontWeight": 300,
+            "lineHeight": "28px",
+            "fontSize": "20px",
+            "letterSpacing": "-0.15px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "h5": {
+          "value": {
+            "fontFamily": "inter",
+            "fontWeight": 300,
+            "lineHeight": "24px",
+            "fontSize": "18px",
+            "letterSpacing": "-0.15px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "h6": {
+          "value": {
+            "fontFamily": "inter",
+            "fontWeight": 600,
+            "lineHeight": "24px",
+            "fontSize": "18px",
+            "letterSpacing": "-0.15px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "body1": {
+          "value": {
+            "fontFamily": "roboto",
+            "fontWeight": 400,
+            "lineHeight": "24px",
+            "fontSize": "16px",
+            "letterSpacing": "0.15px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "body2": {
+          "value": {
+            "fontFamily": "roboto",
+            "fontWeight": 400,
+            "lineHeight": "24px",
+            "fontSize": "16px",
+            "letterSpacing": "0.15px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "subtitle1": {
+          "value": {
+            "fontFamily": "roboto",
+            "fontWeight": 400,
+            "lineHeight": "28px",
+            "fontSize": "18px",
+            "letterSpacing": "0.15px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "subtitle2": {
+          "value": {
+            "fontFamily": "roboto",
+            "fontWeight": 500,
+            "lineHeight": "28px",
+            "fontSize": "18px",
+            "letterSpacing": "0.15px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "overline": {
+          "value": {
+            "fontFamily": "roboto",
+            "fontWeight": 400,
+            "lineHeight": "32px",
+            "fontSize": "12px",
+            "letterSpacing": "1px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "uppercase",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "caption": {
+          "value": {
+            "fontFamily": "roboto",
+            "fontWeight": 400,
+            "lineHeight": "14px",
+            "fontSize": "12px",
+            "letterSpacing": "0.4px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        }
+      },
+      "components": {
+        "buttonLarge": {
+          "value": {
+            "fontFamily": "roboto",
+            "fontWeight": 500,
+            "lineHeight": "26px",
+            "fontSize": "16px",
+            "letterSpacing": "0.4px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "buttonMedium": {
+          "value": {
+            "fontFamily": "roboto",
+            "fontWeight": 500,
+            "lineHeight": "24px",
+            "fontSize": "14px",
+            "letterSpacing": "0.4px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "buttonSmall": {
+          "value": {
+            "fontFamily": "roboto",
+            "fontWeight": 500,
+            "lineHeight": "22px",
+            "fontSize": "12px",
+            "letterSpacing": "0.4px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "avatarText": {
+          "value": {
+            "fontFamily": "roboto",
+            "fontWeight": 400,
+            "lineHeight": "20px",
+            "fontSize": "20px",
+            "letterSpacing": "0.15px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "inputLabel": {
+          "value": {
+            "fontFamily": "roboto",
+            "fontWeight": 400,
+            "lineHeight": "12px",
+            "fontSize": "12px",
+            "letterSpacing": "0.15px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "helperText": {
+          "value": {
+            "fontFamily": "roboto",
+            "fontWeight": 400,
+            "lineHeight": "20px",
+            "fontSize": "12px",
+            "letterSpacing": "0.4px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "inputText": {
+          "value": {
+            "fontFamily": "roboto",
+            "fontWeight": 400,
+            "lineHeight": "24px",
+            "fontSize": "16px",
+            "letterSpacing": "0.15px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        },
+        "tooltip": {
+          "value": {
+            "fontFamily": "roboto",
+            "fontWeight": 500,
+            "lineHeight": "14px",
+            "fontSize": "10px",
+            "letterSpacing": "0px",
+            "paragraphSpacing": 0,
+            "paragraphIndent": 0,
+            "textCase": "none",
+            "textDecoration": "none"
+          },
+          "type": "typography"
+        }
+      }
+    },
+    "colors": {
+      "text": {
+        "primary": {
+          "value": "#000000e6",
+          "type": "color",
+          "description": "Primary text colours."
+        },
+        "secondary": {
+          "value": "#00000099",
+          "type": "color",
+          "description": "Secondary text colours."
+        },
+        "disabled": {
+          "value": "#00000066",
+          "type": "color",
+          "description": "Disabled text colours."
+        },
+        "hint": {
+          "value": "#00000066",
+          "type": "color",
+          "description": "Disabled text colours."
+        }
+      },
+      "primary": {
+        "main": {
+          "value": "#06629d",
+          "type": "color",
+          "description": "Main primary color"
+        },
+        "dark": {
+          "value": "#044873",
+          "type": "color",
+          "description": "Darker version of primary color"
+        },
+        "light": {
+          "value": "#387ab7",
+          "type": "color",
+          "description": "Lighter version of primary color"
+        },
+        "contrast": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "shades": {
+          "4p": {
+            "value": "#06629d0a",
+            "type": "color",
+            "description": "4% transparency of the main color"
+          },
+          "8p": {
+            "value": "#06629d14",
+            "type": "color",
+            "description": "8% transparency of the main color"
+          },
+          "12p": {
+            "value": "#06629d1f",
+            "type": "color",
+            "description": "12% transparency of the main color"
+          },
+          "30p": {
+            "value": "#06629d4d",
+            "type": "color",
+            "description": "30% transparency of the main color"
+          },
+          "50p": {
+            "value": "#06629d80",
+            "type": "color",
+            "description": "50% transparency of the main color"
+          }
+        }
+      },
+      "secondary": {
+        "main": {
+          "value": "#00696e",
+          "type": "color",
+          "description": "Main secondary color"
+        },
+        "dark": {
+          "value": "#004d51",
+          "type": "color",
+          "description": "Darker version of secodnary color"
+        },
+        "light": {
+          "value": "#00848a",
+          "type": "color",
+          "description": "Lighter version of secondary color"
+        },
+        "contrast": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "shades": {
+          "4p": {
+            "value": "#00696e0a",
+            "type": "color",
+            "description": "4% transparency of the main color"
+          },
+          "8p": {
+            "value": "#00696e14",
+            "type": "color",
+            "description": "8% transparency of the main color"
+          },
+          "12p": {
+            "value": "#00696e1f",
+            "type": "color",
+            "description": "12% transparency of the main color"
+          },
+          "30p": {
+            "value": "#00696e4d",
+            "type": "color",
+            "description": "30% transparency of the main color"
+          },
+          "50p": {
+            "value": "#00696e80",
+            "type": "color",
+            "description": "50% transparency of the main color"
+          }
+        }
+      },
+      "action": {
+        "hover": {
+          "value": "#0000000a",
+          "type": "color",
+          "description": "Reflects the action.hover variable from the theme object"
+        },
+        "selected": {
+          "value": "#00000014",
+          "type": "color",
+          "description": "Reflects the action.selected variable from the theme object"
+        },
+        "disabledBackground": {
+          "value": "#0000001f",
+          "type": "color",
+          "description": "Reflects the action.disabledBackground variable from the theme object"
+        },
+        "focus": {
+          "value": "#0000001f",
+          "type": "color",
+          "description": "Reflects the action.focus variable from the theme object"
+        },
+        "disabled": {
+          "value": "#00000042",
+          "type": "color",
+          "description": "Reflects the action.disabled variable from the theme object"
+        },
+        "active": {
+          "value": "#0000008a",
+          "type": "color",
+          "description": "Reflects the action.active variable from the theme object"
+        }
+      },
+      "error": {
+        "main": {
+          "value": "#be0909",
+          "type": "color",
+          "description": "Reflects the error.main variable from the theme object"
+        },
+        "dark": {
+          "value": "#8e0606",
+          "type": "color",
+          "description": "Used for hover states. Reflects the error.dark variable from the theme object"
+        },
+        "light": {
+          "value": "#d24444",
+          "type": "color",
+          "description": "Reflects the error.light variable from the theme object"
+        },
+        "contrast": {
+          "value": "#ffffff",
+          "type": "color",
+          "description": "Reflects the error.contrast variable from the theme object. Color that keeps a contrast ratio above AA when XX.main is used as a bg. color"
+        },
+        "shades": {
+          "4p": {
+            "value": "#be09090a",
+            "type": "color",
+            "description": "Used for hover states. The token represents 4% of the Error/Main token"
+          },
+          "12p": {
+            "value": "#be09091f",
+            "type": "color",
+            "description": "Used for focus visible states. The token represents 12% of the Error/Main token"
+          },
+          "30p": {
+            "value": "#be09094d",
+            "type": "color",
+            "description": "Used for focus visible states. The token represents 30% of the Error/Main token"
+          },
+          "50p": {
+            "value": "#be090980",
+            "type": "color",
+            "description": "Used for enabled state. The token represents 50% of the Error/Main token"
+          },
+          "160p": {
+            "value": "#670505",
+            "type": "color",
+            "description": "Used for enabled state. The token represents 50% of the Error/Main token"
+          }
+        }
+      },
+      "warning": {
+        "main": {
+          "value": "#7c571f",
+          "type": "color",
+          "description": "Reflects the warning.main variable from the theme object"
+        },
+        "dark": {
+          "value": "#5b4017",
+          "type": "color",
+          "description": "Used for hover states. Reflects the warning.dark variable from the theme object"
+        },
+        "light": {
+          "value": "#9c6d27",
+          "type": "color",
+          "description": "Reflects the warning.light variable from the theme object"
+        },
+        "contrast": {
+          "value": "#ffffff",
+          "type": "color",
+          "description": "Reflects the warning.contrast variable from the theme object. Color that keeps a contrast ratio above AA when XX.main is used as a bg. color"
+        },
+        "shades": {
+          "4p": {
+            "value": "#7c571f0a",
+            "type": "color",
+            "description": "Used for hover states. The token represents 4% of the Warning/Main token"
+          },
+          "12p": {
+            "value": "#7c571f1f",
+            "type": "color",
+            "description": "Used for focus visible states. The token represents 12% of the Warning/Main token"
+          },
+          "30p": {
+            "value": "#7c571f4d",
+            "type": "color",
+            "description": "Used for focus visible states. The token represents 30% of the Warning/Main token"
+          },
+          "50p": {
+            "value": "#7c571f80",
+            "type": "color",
+            "description": "Used for enabled state. The token represents 50% of the Warning/Main token"
+          }
+        }
+      },
+      "info": {
+        "main": {
+          "value": "#36637b",
+          "type": "color",
+          "description": "Reflects the info.main variable from the theme object"
+        },
+        "dark": {
+          "value": "#27495b",
+          "type": "color",
+          "description": "Used for hover states. Reflects the info.dark variable from the theme object"
+        },
+        "light": {
+          "value": "#447d9c",
+          "type": "color",
+          "description": "Reflects the info.light variable from the theme object"
+        },
+        "contrast": {
+          "value": "#ffffff",
+          "type": "color",
+          "description": "Reflects the info.contrast variable from the theme object. Color that keeps a contrast ratio above AA when XX.main is used as a bg. color"
+        },
+        "shades": {
+          "4p": {
+            "value": "#36637b0a",
+            "type": "color",
+            "description": "Used for hover states. The token represents 4% of the Warning/Main token"
+          },
+          "12p": {
+            "value": "#36637b1f",
+            "type": "color",
+            "description": "Used for focus visible states. The token represents 12% of the Info/Main token"
+          },
+          "30p": {
+            "value": "#36637b4d",
+            "type": "color",
+            "description": "Used for focus visible states. The token represents 30% of the Warning/Main token"
+          },
+          "50p": {
+            "value": "#36637b80",
+            "type": "color",
+            "description": "Used for enabled state. The token represents 50% of the Warning/Main token"
+          }
+        }
+      },
+      "success": {
+        "main": {
+          "value": "#326a26",
+          "type": "color",
+          "description": "Reflects the success.main variable from the theme object"
+        },
+        "dark": {
+          "value": "#254e1c",
+          "type": "color",
+          "description": "Used for hover states. Reflects the success.dark variable from the theme object"
+        },
+        "light": {
+          "value": "#3f8630",
+          "type": "color",
+          "description": "Reflects the success.light variable from the theme object"
+        },
+        "contrast": {
+          "value": "#ffffff",
+          "type": "color",
+          "description": "Reflects the success.contrast variable from the theme object. Color that keeps a contrast ratio above AA when XX.main is used as a bg. color"
+        },
+        "shades": {
+          "4p": {
+            "value": "#326a260a",
+            "type": "color",
+            "description": "Used for hover states. The token represents 4% of the Success/Main token"
+          },
+          "12p": {
+            "value": "#326a261f",
+            "type": "color",
+            "description": "Used for focus visible states. The token represents 12% of the Success/Main token"
+          },
+          "30p": {
+            "value": "#326a264d",
+            "type": "color",
+            "description": "Used for focus visible states. The token represents 30% of the Success/Main token"
+          },
+          "50p": {
+            "value": "#326a2680",
+            "type": "color",
+            "description": "Used for enabled state. The token represents 50% of the Success/Main token"
+          }
+        }
+      },
+      "coolGrey": {
+        "main": {
+          "value": "#343a3f",
+          "type": "color",
+          "description": "Main primary color"
+        },
+        "dark": {
+          "value": "#21272a",
+          "type": "color",
+          "description": "Darker version of primary color"
+        },
+        "light": {
+          "value": "#4d5358",
+          "type": "color",
+          "description": "Lighter version of primary color"
+        },
+        "contrast": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "shades": {
+          "4p": {
+            "value": "#343a3f0a",
+            "type": "color",
+            "description": "4% transparency of the main color"
+          },
+          "8p": {
+            "value": "#343a3f14",
+            "type": "color",
+            "description": "8% transparency of the main color"
+          },
+          "12p": {
+            "value": "#343a3f1f",
+            "type": "color",
+            "description": "12% transparency of the main color"
+          },
+          "30p": {
+            "value": "#343a3f4d",
+            "type": "color",
+            "description": "30% transparency of the main color"
+          },
+          "50p": {
+            "value": "#343a3f80",
+            "type": "color",
+            "description": "50% transparency of the main color"
+          }
+        }
+      },
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "type": "color",
+          "description": "Reflects the background.default variable from the theme object"
+        },
+        "paper": {
+          "value": "#ffffff",
+          "type": "color",
+          "description": "Reflects the background.paper variable from the theme object"
+        }
+      },
+      "other": {
+        "divider": {
+          "value": "#0000001f",
+          "type": "color",
+          "description": "Reflects the divider variable from the theme object"
+        },
+        "outlinedBorder": {
+          "value": "#0000003b",
+          "type": "color",
+          "description": "Border style for outlined variant components in resting state (Text Field, Select, Chips, etc)"
+        },
+        "backdropOverlay": {
+          "value": "#00000080",
+          "type": "color",
+          "description": "Backdrop overlay background-color"
+        },
+        "filledInputBackground": {
+          "value": "#0000000f",
+          "type": "color",
+          "description": "Token for the background style for the Filled variant components (Text Field, Select, Multiline)."
+        },
+        "standardInputLine": {
+          "value": "#0000006b",
+          "type": "color",
+          "description": "Token for the underline style for the Standard variant components (Text Field, Select, Multiline)."
+        },
+        "snackbar": {
+          "value": "#5e5e5e",
+          "type": "color",
+          "description": "Snackbar background color"
+        },
+        "ratingActive": {
+          "value": "#e29e39",
+          "type": "color",
+          "description": "Active state color for Rating component"
+        },
+        "focusRingColor": {
+          "value": "#06629d",
+          "type": "color",
+          "description": "Reflects the default user agent color"
+        }
+      },
+      "common": {
+        "dark": {
+          "value": "#000000",
+          "type": "color"
+        },
+        "light": {
+          "value": "#ffffff",
+          "type": "color"
+        }
+      },
+      "status": {
+        "draft": {
+          "value": "#c1c7cd",
+          "type": "color"
+        },
+        "archived": {
+          "value": "#a2a9b0",
+          "type": "color"
+        },
+        "submitted": {
+          "value": "#5dabd5",
+          "type": "color"
+        },
+        "migrated": {
+          "value": "#343a3f",
+          "type": "color"
+        },
+        "issued": {
+          "value": "#4da33b",
+          "type": "color"
+        },
+        "onHold": {
+          "value": "#fbb040",
+          "type": "color"
+        },
+        "closed": {
+          "value": "#cf0a0a",
+          "type": "color"
+        },
+        "awaitingActivation": {
+          "value": "#0770b3",
+          "type": "color"
+        },
+        "awaitingAcceptance": {
+          "value": "#fbb040",
+          "type": "color"
+        },
+        "activated": {
+          "value": "#4da33b",
+          "type": "color"
+        },
+        "underAssessment": {
+          "value": "#0770b3",
+          "type": "color"
+        },
+        "deactivated": {
+          "value": "#cf0a0a",
+          "type": "color"
+        },
+        "active": {
+          "value": "#4da33b",
+          "type": "color"
+        },
+        "new": {
+          "value": "#105990",
+          "type": "color"
+        },
+        "pendingUpdates": {
+          "value": "#fbb040",
+          "type": "color"
+        },
+        "published": {
+          "value": "#2a701c",
+          "type": "color"
+        },
+        "roads": {
+          "value": "#a6bdce",
+          "type": "color"
+        },
+        "requestedInfo": {
+          "value": "#4da33b",
+          "type": "color"
+        }
+      },
+      "mapbox": {
+        "unmanagedRoads": {
+          "value": "#FCA1F6",
+          "type": "color"
+        },
+        "accent": {
+          "value": "#FBB040",
+          "type": "color"
+        },
+        "action": {
+          "value": "#00A5AD",
+          "type": "color"
+        },
+        "archived": {
+          "value": "#1D1D1D",
+          "type": "color"
+        },
+        "darkAccent": {
+          "value": "#DA8D1A",
+          "type": "color"
+        },
+        "darkPink": {
+          "value": "#EF3BE3",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "#C1C7CF",
+          "type": "color"
+        },
+        "error": {
+          "value": "#CF0A0A",
+          "type": "color"
+        },
+        "gray": {
+          "value": "#E3E8EB",
+          "type": "color"
+        },
+        "green": {
+          "value": "#4DA33B",
+          "type": "color"
+        },
+        "info": {
+          "value": "#5DABD5",
+          "type": "color"
+        },
+        "networkApproved": {
+          "value": "#49BF31",
+          "type": "color"
+        },
+        "networkApprovedWithCondition": {
+          "value": "#F8A72D",
+          "type": "color"
+        },
+        "networkRestricted": {
+          "value": "#D10A0A",
+          "type": "color"
+        },
+        "pink": {
+          "value": "#DE65D6",
+          "type": "color"
+        },
+        "positive": {
+          "value": "#E4F6E0",
+          "type": "color"
+        },
+        "primary": {
+          "value": "#092242",
+          "type": "color"
+        },
+        "secondary": {
+          "value": "#0770B3",
+          "type": "color"
+        },
+        "secondaryHover": {
+          "value": "#105990",
+          "type": "color"
+        },
+        "success": {
+          "value": "#4DA33B",
+          "type": "color"
+        },
+        "warning": {
+          "value": "#FAE6E6",
+          "type": "color"
+        },
+        "white": {
+          "value": "#FFFFFF",
+          "type": "color"
+        },
+        "tint1": {
+          "value": "#15355E",
+          "type": "color"
+        },
+        "tint2": {
+          "value": "#224470",
+          "type": "color"
+        },
+        "tint3": {
+          "value": "#4E6D8F",
+          "type": "color"
+        },
+        "tint4": {
+          "value": "#7C9BB3",
+          "type": "color"
+        },
+        "tint5": {
+          "value": "#A6BDCE",
+          "type": "color"
+        },
+        "tint6": {
+          "value": "#D7E3E9",
+          "type": "color"
+        },
+        "tint7": {
+          "value": "#E8EFF2",
+          "type": "color"
+        },
+        "tint8": {
+          "value": "#F1F5F7",
+          "type": "color"
+        },
+        "tint9": {
+          "value": "#DDE5E9",
+          "type": "color"
+        }
+      }
+    },
+    "boxShadow": {
+      "outline": {
+        "value": {
+          "color": "#e0e0e0",
+          "type": "dropShadow",
+          "x": 0,
+          "y": 0,
+          "blur": 0,
+          "spread": 1
+        },
+        "type": "boxShadow"
+      }
+    }
+  }
+}
