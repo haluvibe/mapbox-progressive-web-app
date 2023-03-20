@@ -12,14 +12,14 @@ function Camera() {
       try {
         const cameras = await navigator.mediaDevices.enumerateDevices();
         setCameras(cameras);
-        
+
         const videoCameras = cameras.filter(camera => camera.kind === 'videoinput');
         if (videoCameras.length === 0) {
           setError(new Error('No camera available'));
           return;
         }
         setCamera(videoCameras);
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: videoCameras[0].deviceId, facingMode: "environment" } });
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: videoCameras[0].deviceId } });
         const video = videoRef.current;
         video.srcObject = stream;
         await video.play();
@@ -53,7 +53,14 @@ function Camera() {
         currentStream.getTracks().forEach(track => track.stop());
       }
 
-      const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: camera[nextCameraIndex].deviceId, facingMode: nextCameraIndex === 0 ? "user" : "environment" } });
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: camera[nextCameraIndex].deviceId } })
+        .catch(error => {
+          setError(error);
+          return;
+        });
+
+      if (!stream) return;
+
       const video = videoRef.current;
       video.srcObject = stream;
       await video.play();
