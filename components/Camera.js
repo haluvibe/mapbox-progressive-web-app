@@ -46,6 +46,13 @@ function Camera() {
     try {
       const currentCameraIndex = camera.findIndex(cam => cam.deviceId === videoRef.current.srcObject.getVideoTracks()[0].getSettings().deviceId);
       const nextCameraIndex = (currentCameraIndex + 1) % camera.length;
+
+      // Stop the current camera before switching
+      const currentStream = videoRef.current.srcObject;
+      if (currentStream) {
+        currentStream.getTracks().forEach(track => track.stop());
+      }
+
       const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: camera[nextCameraIndex].deviceId, facingMode: nextCameraIndex === 0 ? "user" : "environment" } });
       const video = videoRef.current;
       video.srcObject = stream;
