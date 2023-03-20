@@ -4,12 +4,15 @@ function Camera() {
   const [photo, setPhoto] = useState(null);
   const [error, setError] = useState(null);
   const [camera, setCamera] = useState(null);
+  const [cameras, setCameras] = useState(null);
   const videoRef = useRef(null);
 
   useEffect(() => {
     async function startCamera() {
       try {
         const cameras = await navigator.mediaDevices.enumerateDevices();
+        setCameras(cameras);
+        
         const videoCameras = cameras.filter(camera => camera.kind === 'videoinput');
         if (videoCameras.length === 0) {
           setError(new Error('No camera available'));
@@ -60,10 +63,20 @@ function Camera() {
     const showSwitchCameraButton = camera.length > 1;
     return (
       <div>
+        <div>
+          <pre>{JSON.stringify(cameras, null, 4)}</pre>
+        </div>
+        <div>
         <button onClick={takePhoto}>Take photo</button>
+
         {showSwitchCameraButton && <button onClick={switchCamera}>Switch front/rear camera</button>}
-        <video id="camera" ref={videoRef} playsInline autoPlay muted></video>
-        {photo && <img src={URL.createObjectURL(photo)} alt="captured" />}
+        </div>
+        <div>
+          <video id="camera" ref={videoRef} playsInline autoPlay muted></video>
+        </div>
+        <div>
+          {photo && <img src={URL.createObjectURL(photo)} alt="captured" />}
+        </div>
       </div>
     );
   }
