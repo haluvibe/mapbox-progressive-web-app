@@ -1,26 +1,16 @@
-import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
-import { useImageCapture } from "../utils/useImageCapture";
+
+import dynamic from "next/dynamic";
+
+const Camera = dynamic(() => import("../components/Camera"), {
+  ssr: false,
+});
 
 export default function Home() {
-  const [blob, setBlob] = useState();
-  const { takePhoto } = useImageCapture();
-
-  useEffect(() => {
-    console.log("🚀 ~ file: index.tsx:7 ~ Home ~ blob:", blob);
-  }, [blob]);
-
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <button
-          onClick={async () => {
-            const blob = await takePhoto();
-            setBlob(blob);
-          }}
-        >
-          click me
-        </button>
+        <Camera />
       </main>
 
       <footer className={styles.footer}>
