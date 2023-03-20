@@ -1,41 +1,34 @@
 import { useEffect, useRef } from 'react';
 
 export const useImageCapture = () => {
-  const videoRef = useRef();
-  const imageCaptureRef = useRef();
-
-  useEffect(() => {
-    const initCamera = async () => {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        // The camera stream is now available
-        videoRef.current.srcObject = stream;
-
-        const imageCapture = new ImageCapture(stream.getVideoTracks()[0]);
-        imageCaptureRef.current = imageCapture;
-        // The imageCapture object is now available for taking photos
-
-      } catch (error) {
-        // Handle any errors that occur while accessing the camera
-        console.error('Error accessing camera:', error);
-      }
-    };
-
-    initCamera();
-  }, []);
-
-  const takePhoto = async () => {
-    try {
-      const blob = await imageCaptureRef.current.takePhoto();
-      return blob;
-      // The photo was taken successfully
-      // Use the blob object to display or upload the photo
-
-    } catch (error) {
-      // Handle any errors that occur while taking the photo
-      console.error('Error taking photo:', error);
+  
+    const takePhoto = async () => {
+        if ('mediaDevices' in navigator && 'ImageCapture' in window) {
+            try {
+              // Get access to the camera
+              const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+              // The camera stream is now available
+              const camera = document.querySelector('#camera');
+              // Set the stream as the source of the camera element
+              camera.srcObject = stream;
+              // Wait for the camera to start playing the stream
+              await camera.play();
+        
+              // Create an ImageCapture object from the video track of the stream
+              const track = stream.getVideoTracks()[0];
+              const imageCapture = new ImageCapture(track);
+        
+              // Take a photo
+              const blob = await imageCapture.takePhoto();
+                return blob;
+              // Use the blob object to display or upload the photo
+            } catch (error) {
+              // Handle any errors that occur while accessing the camera
+              console.error('Error accessing camera:', error);
+            }
+          } else {
+            // The Image Capture API is not supported
+          }
     }
-  };
-
-  return { videoRef, takePhoto };
+  return { takePhoto };
 };
