@@ -19,7 +19,7 @@ function Camera() {
           return;
         }
         setCamera(videoCameras);
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: videoCameras[0].deviceId } });
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: videoCameras[0].deviceId, facingMode: "environment" } });
         const video = videoRef.current;
         video.srcObject = stream;
         await video.play();
@@ -46,7 +46,7 @@ function Camera() {
     try {
       const currentCameraIndex = camera.findIndex(cam => cam.deviceId === videoRef.current.srcObject.getVideoTracks()[0].getSettings().deviceId);
       const nextCameraIndex = (currentCameraIndex + 1) % camera.length;
-      const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: camera[nextCameraIndex].deviceId } });
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: camera[nextCameraIndex].deviceId, facingMode: nextCameraIndex === 0 ? "user" : "environment" } });
       const video = videoRef.current;
       video.srcObject = stream;
       await video.play();
