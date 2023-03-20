@@ -63,7 +63,7 @@ const Camera: React.FC<CameraProps> = () => {
     }
 
     startCamera();
-  }, [open, ]);
+  }, [open]);
 
   const takePhoto = useCallback(() => {
     try {
@@ -76,6 +76,7 @@ const Camera: React.FC<CameraProps> = () => {
         ctx?.drawImage(video, 0, 0, canvas?.width, canvas?.height);
         canvas?.toBlob((blob) => {
           setPhoto(blob);
+          handleClose();
         }, "image/jpeg");
       }
     } catch (error) {
@@ -123,14 +124,14 @@ const Camera: React.FC<CameraProps> = () => {
 
   if (error) {
     return <p>Error accessing camera: {error.message}</p>;
-  } else if (photo) {
+  } else if (photo && !open) {
     return (
       <FlexColumn alignItems={"center"}>
         <FlexRow>
           <img src={URL.createObjectURL(photo)} alt="captured" />
         </FlexRow>
         <FlexRow>
-        <ContainedButton onClick={() => {alert('delete clicked')}}>Delete Photo</ContainedButton>
+        <ContainedButton onClick={handleClickOpen}>Retake Photo</ContainedButton>
         </FlexRow>
       </FlexColumn>
     );
@@ -198,11 +199,6 @@ const Camera: React.FC<CameraProps> = () => {
                   autoPlay
                   muted
                 ></video>
-              </FlexRow>
-              <FlexRow>
-                {photo && (
-                  <img src={URL.createObjectURL(photo)} alt="captured" />
-                )}
               </FlexRow>
             </FlexColumn>
           </DialogContent>
