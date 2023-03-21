@@ -9,6 +9,7 @@ import FaultyVehicleIcon from "../src/components/Icons/FaultyVehicleIcon";
 import { alpha, useTheme } from "@mui/material/styles";
 import VehicleIcon from "../src/components/Icons/VehicleIcon";
 import VehicleFleetIcon from "../src/components/Icons/VehicleFleetIcon";
+import AppBar from "../src/components/AppBar";
 
 export default function Home() {
   const { palette } = useTheme();
@@ -18,7 +19,7 @@ export default function Home() {
 
   return (
     <>
-      <header></header>
+      <AppBar />
       <main>
         <FlexColumn
           gap={2}
