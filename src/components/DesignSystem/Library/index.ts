@@ -58,6 +58,7 @@ export * from "./Table";
 export * from "./Typography/BaseTypography";
 export * from "./Typography/Body1";
 export * from "./Typography/Body2";
+export * from "./Links/RouterLink";
 export * from "./Typography/Heading1";
 export * from "./Typography/Heading2";
 export * from "./Typography/Heading3";
