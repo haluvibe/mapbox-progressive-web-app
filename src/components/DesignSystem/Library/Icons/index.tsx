@@ -31,3 +31,4 @@ export { default as WarningIcon } from "@mui/icons-material/WarningAmber";
 export { default as DoneIcon } from "@mui/icons-material/Done";
 export { default as CheckboxIcon } from "@mui/icons-material/CheckBoxOutlined";
 export { default as MenuIcon } from "@mui/icons-material/Menu";
+export { default as CloseIcon } from "@mui/icons-material/Close";
