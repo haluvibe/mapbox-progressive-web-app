@@ -55,13 +55,13 @@ const VehicleDetailsSandbox: FC<Props> = ({}: Props): JSX.Element => {
             <Body2>Class</Body2>
             <Body1>Class 2 heavy vehicle</Body1>
           </FlexColumn>
-          <FlexColumn>
+          <FlexColumn flexWrap={"nowrap"}>
             <Body2>Vehicle</Body2>
             <Body1>Prime mover</Body1>
             <Image
               style={{
                 objectFit: "contain",
-                width: "auto",
+                width: "100%",
                 height: "120px",
               }}
               src={PrimeMoverVehicleImg}
