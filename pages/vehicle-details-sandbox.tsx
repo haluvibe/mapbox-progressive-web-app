@@ -61,7 +61,7 @@ const VehicleDetailsSandbox: FC<Props> = ({}: Props): JSX.Element => {
             <Image
               style={{
                 objectFit: "contain",
-                width: "auto",
+                width: "100%",
                 height: "120px",
               }}
               src={PrimeMoverVehicleImg}
