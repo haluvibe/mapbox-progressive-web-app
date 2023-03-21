@@ -7,10 +7,11 @@ import {
 } from "@mui/material";
 import { FlexColumn } from "../Layout/FlexColumn";
 import { useTheme } from "@mui/material/styles";
+import { Flex } from "../Layout/Flex";
 
 export interface DrawerProps
   extends Omit<MuiDrawerProps, RestrictedVisualProps | "anchor"> {
-  size: "small" | "medium" | "large";
+  size: "small" | "medium" | "large" | "full";
   anchor: Omit<MuiDrawerProps["anchor"], "top" | "bottom">;
   header?: ReactElement;
   footer?: ReactElement;
@@ -20,6 +21,7 @@ const drawerDimensionMap = {
   small: { width: 448, headerHeight: 80, footerHeight: 68 },
   medium: { width: 640, headerHeight: 80, footerHeight: 68 },
   large: { width: 896, headerHeight: 80, footerHeight: 68 },
+  full: { width: "100vw", headerHeight: 80, footerHeight: 68 },
 };
 
 export const Drawer = ({
@@ -54,7 +56,8 @@ export const Drawer = ({
         }}
       >
         {header && (
-          <Box
+          <Flex
+            alignItems={"center"}
             sx={{
               height: dimensions.headerHeight,
               flexShrink: 0,
@@ -63,7 +66,7 @@ export const Drawer = ({
             }}
           >
             {header}
-          </Box>
+          </Flex>
         )}
         <Box
           sx={{
@@ -75,11 +78,10 @@ export const Drawer = ({
           {children}
         </Box>
         {footer && (
-          <Box
+          <Flex
             sx={{
               width: "100%",
               height: dimensions.footerHeight,
-              display: "flex",
               flexShrink: 0,
               boxSizing: "border-box",
               alignItems: "center",
@@ -88,7 +90,7 @@ export const Drawer = ({
             }}
           >
             {footer}
-          </Box>
+          </Flex>
         )}
       </FlexColumn>
     </MuiDrawer>
