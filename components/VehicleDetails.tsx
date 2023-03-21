@@ -1,18 +1,16 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { Box } from "@mui/material";
 import {
   ContainedButton,
-  Drawer,
   Divider,
   Subtitle2,
   Body2,
   Body1,
   FlexColumn,
-  ArrowBackIcon,
-  FlexRow,
 } from "../src/components/DesignSystem/Library";
 import PrimeMoverVehicleImg from "../assets/images/prime-mover.png";
 import Image from "next/image";
+import Camera from "./Camera";
 
 interface Props {}
 
@@ -20,7 +18,7 @@ const VehicleDetails: FC<Props> = ({}: Props): JSX.Element => {
   return (
     <>
       <FlexColumn gap={2}>
-        <Box sx={{ backgroundColor: "black", height: "150px" }} />
+        <Camera />
         <ContainedButton>Plan a trip</ContainedButton>
         <Box sx={{ my: 3 }}>
           <Divider />
@@ -65,4 +63,4 @@ const VehicleDetails: FC<Props> = ({}: Props): JSX.Element => {
   );
 };
 
-export default VehicleDetailsSandbox;
+export default VehicleDetails;

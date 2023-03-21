@@ -1,12 +1,13 @@
 {
-  "name": "Next.JS Progressive Web App",
-  "short_name": "Next PWA",
-  "theme_color": "#ffffff",
-  "background_color": "#004740",
+  "name": "NHVR progressive web app POC",
+  "short_name": "NHVR pwa poc",
+  "theme_color": "#06629d",
+  "background_color": "#06629d",
   "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
+  "description": "An example of using mapbox and camera integration inside a progressive web app",
   "icons": [
     {
       "src": "icons/icon-72x72.png",
@@ -49,5 +50,21 @@
       "type": "image/png"
     }
   ],
+  "shortcuts": [
+  {
+    "name": "Index page shortcut?",
+    "short_name": "Index",
+    "description": "An example shortcut to the index page",
+    "url": "/",
+    "icons": [{ "src": "/icon/light-icon-192x192.png", "sizes": "192x192" }]
+  },
+  {
+    "name": "Home page shortcut",
+    "short_name": "Home",
+    "description": "An example shortcut to the home page",
+    "url": "/home",
+    "icons": [{ "src": "/icon/light-icon-192x192.png", "sizes": "192x192" }]
+  }
+ ],
   "splash_pages": null
 }

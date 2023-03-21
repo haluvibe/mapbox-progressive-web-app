@@ -12,8 +12,7 @@ import {
 } from "../src/components/DesignSystem/Library";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import { alpha } from "@mui/system";
-import { Link, Theme, Avatar } from "@mui/material";
-import { Button } from "../src/components/DesignSystem/Library/Typography/Button";
+import { Link, Avatar } from "@mui/material";
 
 interface CameraProps {}
 
@@ -22,7 +21,7 @@ const Camera: React.FC<CameraProps> = () => {
   const [photo, setPhoto] = useState<Blob | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [camera, setCamera] = useState<MediaDeviceInfo[] | null>(null);
-  const [cameras, setCameras] = useState<MediaDeviceInfo[] | null>(null);
+  // const [cameras, setCameras] = useState<MediaDeviceInfo[] | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleClickOpen = () => {
@@ -36,7 +35,7 @@ const Camera: React.FC<CameraProps> = () => {
     async function startCamera() {
       try {
         const cameras = await navigator.mediaDevices.enumerateDevices();
-        setCameras(cameras);
+        // setCameras(cameras);
 
         const videoCameras = cameras.filter(
           (camera) => camera.kind === "videoinput"
@@ -125,10 +124,16 @@ const Camera: React.FC<CameraProps> = () => {
     return (
       <FlexColumn alignItems={"center"}>
         <FlexRow>
-          <img src={URL.createObjectURL(photo)} alt="captured" />
+          <img
+            src={URL.createObjectURL(photo)}
+            alt="captured"
+            style={{ maxHeight: "250px", maxWidth: "100%" }}
+          />
         </FlexRow>
         <FlexRow>
-        <ContainedButton onClick={handleClickOpen}>Retake Photo</ContainedButton>
+          <ContainedButton onClick={handleClickOpen}>
+            Retake Photo
+          </ContainedButton>
         </FlexRow>
       </FlexColumn>
     );
@@ -137,7 +142,7 @@ const Camera: React.FC<CameraProps> = () => {
   } else {
     // const showSwitchCameraButton = camera.length > 1;
     return (
-      <>
+      <FlexRow>
         <FlexColumn
           sx={(theme) => ({
             alignItems: "center",
@@ -152,15 +157,17 @@ const Camera: React.FC<CameraProps> = () => {
             // }),
           })}
         >
-
-          <Avatar sx={theme => ({
-              width: 48, 
-              height: 48, 
+          <Avatar
+            sx={(theme) => ({
+              width: 48,
+              height: 48,
               backgroundColor: error
                 ? alpha(theme.palette.error.main, 0.08)
-                : alpha(theme.palette.primary.main, 0.08)
-              })}
-          ><BrokenImageIcon color={error ? "error" : "primary"} /></Avatar> 
+                : alpha(theme.palette.primary.main, 0.08),
+            })}
+          >
+            <BrokenImageIcon color={error ? "error" : "primary"} />
+          </Avatar>
 
           <Subtitle1 color={"text.primary"}>
             <Link
@@ -179,7 +186,7 @@ const Camera: React.FC<CameraProps> = () => {
           onClose={handleClose}
           aria-labelledby="customized-dialog-title"
           open={open}
-          size={'lg'}
+          size={"lg"}
         >
           <DialogTitle id="customized-dialog-title">Take a picture</DialogTitle>
           <DialogContent dividers>
@@ -198,21 +205,20 @@ const Camera: React.FC<CameraProps> = () => {
           </DialogContent>
           <DialogActions>
             <FlexRow>
-              <ContainedButton onClick={takePhoto}>
-                Take photo
-              </ContainedButton>
+              <ContainedButton onClick={takePhoto}>Take photo</ContainedButton>
 
               {/* {showSwitchCameraButton && (
                 <ContainedButton onClick={switchCamera}>
                   Switch front/rear camera
                 </ContainedButton>
               )} */}
-                <ContainedButton onClick={handleClose}>Close Modal</ContainedButton>
+              <ContainedButton onClick={handleClose}>
+                Close Modal
+              </ContainedButton>
             </FlexRow>
-           
           </DialogActions>
         </Dialog>
-      </>
+      </FlexRow>
     );
   }
 };
