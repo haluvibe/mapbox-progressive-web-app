@@ -25,7 +25,7 @@ const drawerDimensionMap = {
 
 const topDownDimensions = {
   width: "100vw",
-  height: 320,
+  height: "auto",
   headerHeight: 0,
   footerHeight: 0,
 };
