@@ -7,7 +7,7 @@ import {RestrictedVisualProps} from '../types';
 import {PersonOutlined} from "../Icons";
 
 export interface AvatarProps
-  extends Omit<MuiAvatarProps, RestrictedVisualProps> {
+  extends Omit<MuiAvatarProps> {
   size?: number;
 }
 
