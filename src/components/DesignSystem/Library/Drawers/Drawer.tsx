@@ -38,6 +38,7 @@ export const Drawer = ({
   size = "medium",
   ...props
 }: DrawerProps) => {
+  console.log("🚀 ~ file: Drawer.tsx:35 ~ size:", size);
   const { palette } = useTheme();
 
   const { dimensions, border, p } = useMemo(

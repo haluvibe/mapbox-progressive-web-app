@@ -7,17 +7,28 @@ import {
 } from "../src/components/DesignSystem/Library";
 import VehicleDetails from "../components/VehicleDetails";
 import { useRouter } from "next/router";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 interface Props {}
 
 const Map: FC<Props> = ({}: Props): JSX.Element => {
-  const [isOpen, setIsOpen] = useState(true);
+  const theme = useTheme();
+  const largeScreen = useMediaQuery(theme.breakpoints.up("md"));
+  console.log("🚀 ~ file: map.tsx:17 ~ largeScreen:", largeScreen);
+  const [isHorizontalDrawerOpen, setIsHorizontalDrawerOpen] = useState(true);
+  const [isVerticalDrawerOpen, setIsVerticalDrawerOpen] = useState(false);
   const router = useRouter();
+
+  const toggleDrawers = () => {
+    setIsHorizontalDrawerOpen(!isHorizontalDrawerOpen);
+    setIsVerticalDrawerOpen(!isVerticalDrawerOpen);
+  };
+
   return (
     <>
       <Drawer
-        open={isOpen}
-        size={"medium"}
+        open={isHorizontalDrawerOpen}
+        size={largeScreen ? "medium" : "full"}
         anchor={"left"}
         header={
           <FlexRow>
@@ -29,7 +40,20 @@ const Map: FC<Props> = ({}: Props): JSX.Element => {
           </FlexRow>
         }
       >
-        <VehicleDetails />
+        <VehicleDetails toggleDrawers={toggleDrawers} />
+      </Drawer>
+      <Drawer
+        open={isVerticalDrawerOpen}
+        size={"small"}
+        anchor={"bottom"}
+        header={
+          <FlexRow>
+            <ArrowBackIcon cursor={"pointer"} onClick={toggleDrawers} />
+            <Body1>Enter your trip details</Body1>
+          </FlexRow>
+        }
+      >
+        bottom drawer
       </Drawer>
       <div>hello world</div>
     </>

@@ -12,14 +12,16 @@ import PrimeMoverVehicleImg from "../assets/images/prime-mover.png";
 import Image from "next/image";
 import Camera from "./Camera";
 
-interface Props {}
+interface Props {
+  toggleDrawers: () => void;
+}
 
-const VehicleDetails: FC<Props> = ({}: Props): JSX.Element => {
+const VehicleDetails: FC<Props> = ({ toggleDrawers }: Props): JSX.Element => {
   return (
     <>
       <FlexColumn gap={2}>
         <Camera />
-        <ContainedButton>Plan a trip</ContainedButton>
+        <ContainedButton onClick={toggleDrawers}>Plan a trip</ContainedButton>
         <Box sx={{ my: 3 }}>
           <Divider />
         </Box>
