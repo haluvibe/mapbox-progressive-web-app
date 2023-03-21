@@ -29,3 +29,4 @@ export { default as HorizontalRuleIcon } from "@mui/icons-material/HorizontalRul
 export { default as DeleteIcon } from "@mui/icons-material/DeleteOutlined";
 export { default as WarningIcon } from "@mui/icons-material/WarningAmber";
 export { default as DoneIcon } from "@mui/icons-material/Done";
+export { default as CheckboxIcon } from "@mui/icons-material/CheckBoxOutlined";
