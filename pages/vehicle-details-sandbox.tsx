@@ -55,7 +55,7 @@ const VehicleDetailsSandbox: FC<Props> = ({}: Props): JSX.Element => {
             <Body2>Class</Body2>
             <Body1>Class 2 heavy vehicle</Body1>
           </FlexColumn>
-          <FlexColumn flexWrap={"nowrap"}>
+          <FlexColumn>
             <Body2>Vehicle</Body2>
             <Body1>Prime mover</Body1>
             <Image
