@@ -10,15 +10,12 @@ import {
   FlexRow,
   Subtitle1,
 } from "../src/components/DesignSystem/Library";
-import { Avatar } from "../src/components/DesignSystem/Library/Avatar";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import { alpha } from "@mui/system";
-import { Link, Theme } from "@mui/material";
+import { Link, Theme, Avatar } from "@mui/material";
 import { Button } from "../src/components/DesignSystem/Library/Typography/Button";
 
-interface CameraProps {
-  ref: Ref<HTMLDivElement>;
-}
+interface CameraProps {}
 
 const Camera: React.FC<CameraProps> = () => {
   const [open, setOpen] = React.useState(false);
@@ -155,19 +152,16 @@ const Camera: React.FC<CameraProps> = () => {
             // }),
           })}
         >
-          <Avatar
-            sx={(theme: Theme) => ({
-              width: 48,
-              height: 48,
+
+          <Avatar sx={theme => ({
+              width: 48, 
+              height: 48, 
               backgroundColor: error
                 ? alpha(theme.palette.error.main, 0.08)
-                : alpha(theme.palette.primary.main, 0.08),
-            })}
-          >
-            <FlexRow>
-              <BrokenImageIcon color={error ? "error" : "primary"} />
-            </FlexRow>
-          </Avatar>
+                : alpha(theme.palette.primary.main, 0.08)
+              })}
+          ><BrokenImageIcon color={error ? "error" : "primary"} /></Avatar> 
+
           <Subtitle1 color={"text.primary"}>
             <Link
               sx={{ cursor: "pointer" }}
@@ -185,7 +179,7 @@ const Camera: React.FC<CameraProps> = () => {
           onClose={handleClose}
           aria-labelledby="customized-dialog-title"
           open={open}
-          sizee={'LG'}
+          size={'lg'}
         >
           <DialogTitle id="customized-dialog-title">Take a picture</DialogTitle>
           <DialogContent dividers>
