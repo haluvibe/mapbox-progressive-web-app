@@ -5,6 +5,7 @@ import { CssBaseline } from "@mui/material";
 import { ThemeSelectionProvider } from "../src/theming/ThemeSelectionProvider";
 import { backwardsCompatibleThemes } from "../src/theming/themes";
 import { PhotoProvider } from "../providers/PhotoProvider";
+import { MapProvider } from "../src/components/MapContext";
 import dynamic from "next/dynamic";
 
 const AddToHomeScreen = dynamic(() => import("../components/AddToHomeScreen"), {
@@ -49,9 +50,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       >
         <ThemeProvider>
           <CssBaseline />
-          <PhotoProvider>
-            <Component {...pageProps} />
-          </PhotoProvider>
+          <MapProvider>
+            <PhotoProvider>
+              <Component {...pageProps} />
+            </PhotoProvider>
+          </MapProvider>
           <AddToHomeScreen />
           <UpdatePWA />
         </ThemeProvider>

@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import {
   FlexColumn,
   ArrowForwardIcon,
@@ -11,6 +10,7 @@ import { alpha, useTheme } from "@mui/material/styles";
 import VehicleIcon from "../src/components/Icons/VehicleIcon";
 import VehicleFleetIcon from "../src/components/Icons/VehicleFleetIcon";
 import { useRouter } from "next/navigation";
+import AppBar from "../src/components/AppBar";
 
 export default function Home() {
   const { palette } = useTheme();
@@ -18,7 +18,8 @@ export default function Home() {
   const secondary = palette.secondary.main;
   const secondaryAlpha = alpha(secondary, 0.04);
   return (
-    <div>
+    <>
+      <AppBar />
       <main>
         <FlexColumn
           gap={2}
@@ -60,6 +61,6 @@ export default function Home() {
           />
         </FlexColumn>
       </main>
-    </div>
+    </>
   );
 }
