@@ -1,6 +1,8 @@
 // AddToHomeScreen.tsx
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
+import IosShareIcon from "@mui/icons-material/IosShare";
+import { OutlinedButton } from "../src/components/DesignSystem/Library";
 
 interface AddToHomeScreenProps {}
 
@@ -47,8 +49,15 @@ const AddToHomeScreen: React.FC<AddToHomeScreenProps> = () => {
         zIndex: "tooltip",
       }}
     >
-      To install this app on your iPhone, tap the Share button and then "Add to
-      Home Screen."
+      To install this app on your iPhone, tap the Share button <IosShareIcon />{" "}
+      and then "Add to Home Screen."
+      <OutlinedButton
+        onClick={() => {
+          setShowBanner(false);
+        }}
+      >
+        Close
+      </OutlinedButton>
     </Box>
   );
 };
