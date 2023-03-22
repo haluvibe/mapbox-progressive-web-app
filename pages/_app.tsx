@@ -11,6 +11,10 @@ const AddToHomeScreen = dynamic(() => import("../components/AddToHomeScreen"), {
   ssr: false,
 });
 
+const UpdatePWA = dynamic(() => import("../components/UpdatePWA"), {
+  ssr: false,
+});
+
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -49,6 +53,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
           </PhotoProvider>
           <AddToHomeScreen />
+          <UpdatePWA />
         </ThemeProvider>
       </ThemeSelectionProvider>
     </>
