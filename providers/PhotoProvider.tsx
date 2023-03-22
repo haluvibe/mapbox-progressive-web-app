@@ -32,19 +32,19 @@ const usePhoto = () => {
 
 const PhotoProvider: React.FC<PhotoProviderProps> = ({ children }) => {
   const [photo, setPhotoState] = useState<Blob | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [hasLoaded, setHasLoaded] = useState<boolean>(false);
 
   const setPhoto = (newPhoto: Blob | null) => {
     setPhotoState(newPhoto);
-    setIsLoading(false);
+    setIsLoading(true);
     setHasLoaded(false);
   };
 
   useEffect(() => {
     if (!photo) {
       setHasLoaded(false);
-      setIsLoading(false);
+      setIsLoading(true);
       return;
     }
 
