@@ -4,18 +4,24 @@ import { Box } from "@mui/material";
 import { Geometry } from "geojson";
 import { useTheme } from "@mui/material/styles";
 import { useMapContext } from "./MapContext";
+import { useDevices } from "../../providers/DevicesProvider";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYW1vcnRvbmkiLCJhIjoiY2xkczcyNHBuMW9sejN6cWV2dGl6bHE1aSJ9.tzzko4Wpw-wkg1hDQrW3hQ";
 
 function MapboxMap() {
   const mapContext = useMapContext();
+  const devicesContext = useDevices();
   const theme = useTheme();
 
   const [map, setMap] = useState<mapboxgl.Map>();
-  const [lng, setLng] = useState(144.94787);
-  const [lat, setLat] = useState(-37.80511);
-  const [zoom, setZoom] = useState(12);
+  const [lng, setLng] = useState(
+    devicesContext.geolocationData?.coords.longitude ?? 0
+  );
+  const [lat, setLat] = useState(
+    devicesContext.geolocationData?.coords.latitude ?? 0
+  );
+  const [zoom, setZoom] = useState(6);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
   const [layerIds, setLayerIds] = useState<string[]>([]);
 
