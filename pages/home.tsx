@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import {
   FlexColumn,
   ArrowForwardIcon,
@@ -13,7 +12,7 @@ import VehicleFleetIcon from "../src/components/Icons/VehicleFleetIcon";
 import { useRouter } from "next/navigation";
 import { useDevices } from "../providers/DevicesProvider";
 import { useEffect } from "react";
-import { AppBar } from "@mui/material";
+import AppBar from "../src/components/AppBar";
 
 export default function Home() {
   const { palette } = useTheme();
