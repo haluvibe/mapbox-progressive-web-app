@@ -1,9 +1,15 @@
 // pages/request-Geolocation-permission.tsx
 import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
-import { Box, ContainedButton } from "../src/components/DesignSystem/Library";
+import {
+  Body1,
+  Box,
+  ContainedButton,
+  Heading5,
+} from "../src/components/DesignSystem/Library";
 import { useDevices } from "../providers/DevicesProvider";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const RequestGeolocationPermission: NextPage = () => {
   const router = useRouter();
@@ -36,7 +42,16 @@ const RequestGeolocationPermission: NextPage = () => {
         gap: 2,
       }}
     >
-      <h1>Request Geolocation Permission</h1>
+      <Image
+        src="/images/location-illustrations.png"
+        alt="camera"
+        width="200"
+        height="200"
+      />
+      <Heading5>Geolocation</Heading5>
+      <Body1 color={"text.secondary"}>
+        NHVR App would like to use location service to use in maps
+      </Body1>
       <Box>
         <ContainedButton
           onClick={async () => {
