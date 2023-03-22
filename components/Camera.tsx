@@ -13,12 +13,15 @@ import {
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import { alpha } from "@mui/system";
 import { Link, Avatar } from "@mui/material";
+import { usePhoto } from "../providers/PhotoProvider";
 
 interface CameraProps {}
 
 const Camera: React.FC<CameraProps> = () => {
+  const { photo, setPhoto } = usePhoto();
+  console.log("🚀 ~ file: Camera.tsx:22 ~ setPhoto:", setPhoto);
+  console.log("🚀 ~ file: Camera.tsx:22 ~ photo:", photo);
   const [open, setOpen] = React.useState(false);
-  const [photo, setPhoto] = useState<Blob | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [camera, setCamera] = useState<MediaDeviceInfo[] | null>(null);
   // const [cameras, setCameras] = useState<MediaDeviceInfo[] | null>(null);
