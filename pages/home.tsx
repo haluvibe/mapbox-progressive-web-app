@@ -2,6 +2,7 @@ import {
   FlexColumn,
   ArrowForwardIcon,
   CheckboxIcon,
+  ExternalLink,
 } from "../src/components/DesignSystem/Library";
 import ButtonCard from "../src/components/ButtonCard";
 import WelcomeCard from "../src/components/WelcomeCard";
@@ -13,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { useDevices } from "../providers/DevicesProvider";
 import { useEffect } from "react";
 import AppBar from "../src/components/AppBar";
+import IconContainer from "../src/components/Icons/IconContainer";
 
 export default function Home() {
   const { palette } = useTheme();
@@ -20,7 +22,8 @@ export default function Home() {
   const router = useRouter();
 
   const secondary = palette.secondary.main;
-  const secondaryAlpha = alpha(secondary, 0.04);
+  const primaryAlpha = alpha(palette.primary.main, 0.12);
+  const secondaryAlpha = alpha(secondary, 0.12);
 
   useEffect(() => {
     stopCameraStream();
@@ -43,34 +46,39 @@ export default function Home() {
         >
           <WelcomeCard name={"Jerome Bell"} />
           <ButtonCard
-            startIcon={<VehicleFleetIcon color={secondary} />}
+            startIcon={
+              <VehicleFleetIcon bgColor={secondaryAlpha} color={secondary} />
+            }
             title={"My fleet"}
             subTitle={"Your registered vehicles and their specifications"}
           />
           <ButtonCard
-            startIcon={<FaultyVehicleIcon color={secondary} />}
+            startIcon={
+              <FaultyVehicleIcon bgColor={secondaryAlpha} color={secondary} />
+            }
             title={"Vehicle defects"}
             subTitle={"Manage compliance for defective vehicles"}
           />
           <ButtonCard
-            startIcon={<VehicleIcon color={secondary} />}
+            startIcon={
+              <VehicleIcon bgColor={secondaryAlpha} color={secondary} />
+            }
             title={"Performance Based Standards (PBS)"}
             subTitle={
               "Submit and track the status of your Design Approval and Vehicle Approval applications"
             }
           />
           <ButtonCard
-            bgColor={secondaryAlpha}
+            bgColor={primaryAlpha}
+            onClick={() => router.push("/map")}
             title={"Vehicle trip planner"}
             subTitle={"Scan a registration plate of a vehicle to plan a trip"}
-            startIcon={<CheckboxIcon color={"secondary"} />}
-            endIcon={
-              <ArrowForwardIcon
-                color={"secondary"}
-                onClick={() => router.push("/map")}
-                cursor={"pointer"}
-              />
+            startIcon={
+              <IconContainer bgColor={"transparent"}>
+                <CheckboxIcon color={"primary"} />
+              </IconContainer>
             }
+            endIcon={<ArrowForwardIcon color={"primary"} cursor={"pointer"} />}
           />
         </FlexColumn>
       </main>

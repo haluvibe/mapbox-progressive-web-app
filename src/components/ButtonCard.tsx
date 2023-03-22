@@ -13,6 +13,7 @@ interface Props {
   subTitle: string;
   startIcon: ReactNode;
   endIcon?: ReactNode;
+  onClick?: () => void;
   bgColor?: string;
 }
 
@@ -20,11 +21,12 @@ const ButtonCard: FC<Props> = ({
   title,
   subTitle,
   bgColor,
+  onClick,
   startIcon,
   endIcon,
 }: Props): JSX.Element => {
   return (
-    <Card bgColor={bgColor}>
+    <Card bgColor={bgColor} onClick={onClick}>
       <Flex>
         <CardContent padding={"SM"} spacing={"SM"}>
           {startIcon}

@@ -16,10 +16,10 @@ function MapboxMap() {
 
   const [map, setMap] = useState<mapboxgl.Map>();
   const [lng, setLng] = useState(
-    devicesContext.geolocationData?.coords.longitude ?? 0
+    devicesContext.geolocationData?.coords.longitude ?? 144.94787
   );
   const [lat, setLat] = useState(
-    devicesContext.geolocationData?.coords.latitude ?? 0
+    devicesContext.geolocationData?.coords.latitude ?? -37.80511
   );
   const [zoom, setZoom] = useState(6);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
@@ -87,7 +87,6 @@ function MapboxMap() {
       return;
     }
 
-    console.log(id);
     map.addLayer({
       id,
       type: "line",
