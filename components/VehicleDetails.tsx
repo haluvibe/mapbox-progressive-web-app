@@ -18,10 +18,10 @@ const Camera = dynamic(() => import("../components/Camera"), {
 });
 
 interface Props {
-  toggleDrawers: () => void;
+  onPlanTrip: () => void;
 }
 
-const VehicleDetails: FC<Props> = ({ toggleDrawers }: Props): JSX.Element => {
+const VehicleDetails: FC<Props> = ({ onPlanTrip }: Props): JSX.Element => {
   const { photo, isLoading, hasLoaded } = usePhoto();
 
   return (
@@ -30,7 +30,7 @@ const VehicleDetails: FC<Props> = ({ toggleDrawers }: Props): JSX.Element => {
         <Camera />
         {photo && (
           <>
-            <ContainedButton onClick={toggleDrawers} disabled={isLoading}>
+            <ContainedButton onClick={onPlanTrip} disabled={isLoading}>
               Plan a trip
             </ContainedButton>
             <Box sx={{ my: 3 }}>

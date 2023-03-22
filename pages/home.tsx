@@ -67,6 +67,7 @@ export default function Home() {
               <ArrowForwardIcon
                 color={"secondary"}
                 onClick={() => router.push("/map")}
+                cursor={"pointer"}
               />
             }
           />
