@@ -5,6 +5,7 @@ import { CssBaseline } from "@mui/material";
 import { ThemeSelectionProvider } from "../src/theming/ThemeSelectionProvider";
 import { backwardsCompatibleThemes } from "../src/theming/themes";
 import { PhotoProvider } from "../providers/PhotoProvider";
+import AddToHomeScreen from "../components/AddToHomeScreen";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -43,6 +44,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <PhotoProvider>
             <Component {...pageProps} />
           </PhotoProvider>
+          <AddToHomeScreen />
         </ThemeProvider>
       </ThemeSelectionProvider>
     </>
