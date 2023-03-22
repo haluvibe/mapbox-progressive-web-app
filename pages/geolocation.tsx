@@ -5,7 +5,9 @@ import {
   Body1,
   Box,
   ContainedButton,
+  FlexRow,
   Heading5,
+  OutlinedButton,
 } from "../src/components/DesignSystem/Library";
 import { useDevices } from "../providers/DevicesProvider";
 import { useRouter } from "next/router";
@@ -53,15 +55,24 @@ const RequestGeolocationPermission: NextPage = () => {
         NHVR App would like to use location service to use in maps
       </Body1>
       <Box>
-        <ContainedButton
-          onClick={async () => {
-            setIsLoading(true);
-            await requestGeolocationPermission();
-          }}
-          disabled={isLoading}
-        >
-          Allow
-        </ContainedButton>
+        <FlexRow>
+          <ContainedButton
+            onClick={async () => {
+              setIsLoading(true);
+              await requestGeolocationPermission();
+            }}
+            disabled={isLoading}
+          >
+            Allow
+          </ContainedButton>
+          <OutlinedButton
+            onClick={async () => {
+              router.push("/home");
+            }}
+          >
+            Skip
+          </OutlinedButton>
+        </FlexRow>
       </Box>
     </Box>
   );
