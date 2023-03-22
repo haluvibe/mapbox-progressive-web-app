@@ -5,7 +5,11 @@ import { CssBaseline } from "@mui/material";
 import { ThemeSelectionProvider } from "../src/theming/ThemeSelectionProvider";
 import { backwardsCompatibleThemes } from "../src/theming/themes";
 import { PhotoProvider } from "../providers/PhotoProvider";
-import AddToHomeScreen from "../components/AddToHomeScreen";
+import dynamic from "next/dynamic";
+
+const AddToHomeScreen = dynamic(() => import("../components/AddToHomeScreen"), {
+  ssr: false,
+});
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (

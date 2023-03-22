@@ -10,8 +10,12 @@ import {
 } from "../src/components/DesignSystem/Library";
 import PrimeMoverVehicleImg from "../assets/images/prime-mover.png";
 import Image from "next/image";
-import Camera from "./Camera";
 import { usePhoto } from "../providers/PhotoProvider";
+import dynamic from "next/dynamic";
+
+const Camera = dynamic(() => import("../components/Camera"), {
+  ssr: false,
+});
 
 interface Props {
   toggleDrawers: () => void;

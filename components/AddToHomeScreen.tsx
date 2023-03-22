@@ -4,6 +4,12 @@ import { Box } from "@mui/material";
 
 interface AddToHomeScreenProps {}
 
+declare global {
+  interface Navigator {
+    standalone?: boolean;
+  }
+}
+
 const AddToHomeScreen: React.FC<AddToHomeScreenProps> = () => {
   const [showBanner, setShowBanner] = useState(false);
 
