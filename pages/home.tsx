@@ -13,6 +13,7 @@ import VehicleFleetIcon from "../src/components/Icons/VehicleFleetIcon";
 import { useRouter } from "next/navigation";
 import { useDevices } from "../providers/DevicesProvider";
 import { useEffect } from "react";
+import { AppBar } from "@mui/material";
 
 export default function Home() {
   const { palette } = useTheme();
@@ -31,6 +32,7 @@ export default function Home() {
 
   return (
     <div>
+      <AppBar />
       <main>
         <FlexColumn
           gap={2}
