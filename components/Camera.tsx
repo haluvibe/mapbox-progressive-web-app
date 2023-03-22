@@ -9,6 +9,7 @@ import {
   FlexColumn,
   FlexRow,
   Subtitle1,
+  TextButton,
 } from "../src/components/DesignSystem/Library";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import { alpha } from "@mui/system";
@@ -163,16 +164,16 @@ const Camera: React.FC<CameraProps> = () => {
           </DialogContent>
           <DialogActions>
             <FlexRow>
-              <ContainedButton onClick={takePhoto}>Take photo</ContainedButton>
+              <ContainedButton onClick={takePhoto}>
+                Take picture
+              </ContainedButton>
 
               {/* {showSwitchCameraButton && (
                 <ContainedButton onClick={switchCamera}>
                   Switch front/rear camera
                 </ContainedButton>
               )} */}
-              <ContainedButton onClick={handleClose}>
-                Close Modal
-              </ContainedButton>
+              <TextButton onClick={handleClose}>Close</TextButton>
             </FlexRow>
           </DialogActions>
         </Dialog>
