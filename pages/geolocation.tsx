@@ -1,14 +1,21 @@
-// pages/request-camera-permission.tsx
+// pages/request-Geolocation-permission.tsx
 import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { Box, ContainedButton } from "../src/components/DesignSystem/Library";
 import { useDevices } from "../providers/DevicesProvider";
 import { useRouter } from "next/router";
 
-const RequestCameraPermission: NextPage = () => {
+const RequestGeolocationPermission: NextPage = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { requestCameraPermission, stopCameraStream } = useDevices();
+  const { requestGeolocationPermission, geolocationData, stopCameraStream } =
+    useDevices();
+
+  useEffect(() => {
+    if (geolocationData) {
+      router.push("/home");
+    }
+  }, [geolocationData]);
 
   useEffect(() => {
     stopCameraStream();
@@ -29,14 +36,12 @@ const RequestCameraPermission: NextPage = () => {
         gap: 2,
       }}
     >
-      <h1>Request Camera Permission</h1>
+      <h1>Request Geolocation Permission</h1>
       <Box>
         <ContainedButton
           onClick={async () => {
             setIsLoading(true);
-            await requestCameraPermission();
-            stopCameraStream();
-            router.push("/geolocation");
+            await requestGeolocationPermission();
           }}
           disabled={isLoading}
         >
@@ -47,4 +52,4 @@ const RequestCameraPermission: NextPage = () => {
   );
 };
 
-export default RequestCameraPermission;
+export default RequestGeolocationPermission;

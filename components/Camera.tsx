@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect, Ref } from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import {
   Body2,
   ContainedButton,
@@ -14,17 +14,15 @@ import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import { alpha } from "@mui/system";
 import { Link, Avatar } from "@mui/material";
 import { usePhoto } from "../providers/PhotoProvider";
+import { useDevices } from "../providers/DevicesProvider";
 
 interface CameraProps {}
 
 const Camera: React.FC<CameraProps> = () => {
   const { photo, setPhoto } = usePhoto();
-  console.log("🚀 ~ file: Camera.tsx:22 ~ setPhoto:", setPhoto);
-  console.log("🚀 ~ file: Camera.tsx:22 ~ photo:", photo);
+  const { cameraStream, startCameraStream, stopCameraStream } = useDevices();
   const [open, setOpen] = React.useState(false);
   const [error, setError] = useState<Error | null>(null);
-  const [camera, setCamera] = useState<MediaDeviceInfo[] | null>(null);
-  // const [cameras, setCameras] = useState<MediaDeviceInfo[] | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleClickOpen = () => {
@@ -37,32 +35,29 @@ const Camera: React.FC<CameraProps> = () => {
   useEffect(() => {
     async function startCamera() {
       try {
-        const cameras = await navigator.mediaDevices.enumerateDevices();
-        // setCameras(cameras);
-
-        const videoCameras = cameras.filter(
-          (camera) => camera.kind === "videoinput"
-        );
-        if (videoCameras.length === 0) {
-          setError(new Error("No camera available"));
-          return;
-        }
-        setCamera(videoCameras);
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: "environment" },
-        });
+        await startCameraStream();
         const video = videoRef.current;
-        if (video) {
-          video.srcObject = stream;
+        if (video && cameraStream) {
+          video.srcObject = cameraStream;
+          video.play().catch((error) => {
+            console.error("Error playing video:", error);
+          });
         }
-        await video?.play();
       } catch (error) {
         setError(error as Error);
       }
     }
 
-    startCamera();
-  }, [open]);
+    if (open) {
+      startCamera();
+    } else {
+      stopCameraStream();
+    }
+
+    return () => {
+      stopCameraStream();
+    };
+  }, [open, cameraStream, startCameraStream, stopCameraStream]);
 
   const takePhoto = useCallback(() => {
     try {
@@ -83,44 +78,6 @@ const Camera: React.FC<CameraProps> = () => {
     }
   }, [open]);
 
-  // const switchCamera = useCallback(async () => {
-  //   try {
-  //     const currentCameraIndex = camera?.findIndex(
-  //       (cam) =>
-  //         cam.deviceId ===
-  //         videoRef?.current?.srcObject?.getVideoTracks()[0].getSettings()
-  //           .deviceId
-  //     );
-  //     const nextCameraIndex =
-  //       (currentCameraIndex ?? 0 + 1) % (camera?.length ?? 1);
-
-  //     // Stop the current camera before switching
-  //     const currentStream = videoRef?.current?.srcObject;
-  //     if (currentStream) {
-  //       currentStream?.getTracks().forEach((track) => track.stop());
-  //     }
-
-  //     const stream = await navigator.mediaDevices
-  //       .getUserMedia({
-  //         video: { deviceId: camera?.[nextCameraIndex].deviceId },
-  //       })
-  //       .catch((error) => {
-  //         setError(error);
-  //         return;
-  //       });
-
-  //     if (!stream) return;
-
-  //     const video = videoRef.current;
-  //     if (!!video) {
-  //       video.srcObject = stream;
-  //     }
-  //     await video?.play();
-  //   } catch (error) {
-  //     setError(error as Error);
-  //   }
-  // }, [camera]);
-
   if (error) {
     return <p>Error accessing camera: {error.message}</p>;
   } else if (photo && !open) {
@@ -140,8 +97,6 @@ const Camera: React.FC<CameraProps> = () => {
         </FlexRow>
       </FlexColumn>
     );
-  } else if (!camera) {
-    return <p>Loading camera...</p>;
   } else {
     // const showSwitchCameraButton = camera.length > 1;
     return (

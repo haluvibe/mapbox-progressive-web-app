@@ -33,7 +33,7 @@ const Map: FC<Props> = ({}: Props): JSX.Element => {
   const router = useRouter();
 
   const onVehicleDetailsBack = () => {
-    router.push("/");
+    router.push("/home");
   };
 
   const onPlanTrip = () => {
