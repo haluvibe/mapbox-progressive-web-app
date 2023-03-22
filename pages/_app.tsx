@@ -15,6 +15,10 @@ const UpdatePWA = dynamic(() => import("../components/UpdatePWA"), {
   ssr: false,
 });
 
+const DevicesProvider = dynamic(() => import("../providers/DevicesProvider"), {
+  ssr: false,
+});
+
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -49,9 +53,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       >
         <ThemeProvider>
           <CssBaseline />
-          <PhotoProvider>
-            <Component {...pageProps} />
-          </PhotoProvider>
+          <DevicesProvider>
+            <PhotoProvider>
+              <Component {...pageProps} />
+            </PhotoProvider>
+          </DevicesProvider>
           <AddToHomeScreen />
           <UpdatePWA />
         </ThemeProvider>

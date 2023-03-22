@@ -34,7 +34,7 @@ const Map: FC<Props> = ({}: Props): JSX.Element => {
           <FlexRow>
             <ArrowBackIcon
               cursor={"pointer"}
-              onClick={() => router.push("/")}
+              onClick={() => router.push("/home")}
             />
             <Body1>Vehicle details</Body1>
           </FlexRow>
