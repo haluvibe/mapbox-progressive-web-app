@@ -22,7 +22,7 @@ declare global {
 }
 
 const AddToHomeScreen: React.FC<AddToHomeScreenProps> = () => {
-  const [showBanner, setShowBanner] = useState(true);
+  const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
     function isIos() {
