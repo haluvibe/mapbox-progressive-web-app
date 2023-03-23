@@ -25,7 +25,7 @@ const UpdatePWA: React.FC = () => {
 
     const mediaQuery = window.matchMedia("(display-mode: standalone)");
     const isStandalone = window.navigator.standalone;
-    setIsInstalled(mediaQuery.matches || isStandalone);
+    setIsInstalled(!!(mediaQuery?.matches || isStandalone));
 
     return () => {
       navigator.serviceWorker.removeEventListener("controllerchange", onUpdate);
