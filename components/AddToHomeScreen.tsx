@@ -22,7 +22,7 @@ declare global {
 }
 
 const AddToHomeScreen: React.FC<AddToHomeScreenProps> = () => {
-  const [showBanner, setShowBanner] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
 
   useEffect(() => {
     function isIos() {
@@ -64,24 +64,18 @@ const AddToHomeScreen: React.FC<AddToHomeScreenProps> = () => {
           alignItems={"center"}
           width={"100%"}
         >
-          <FlexRow
-            justifyContent={"flex-start"}
-            alignItems={"center"}
-            width={"100%"}
-          >
+          <FlexRow justifyContent={"flex-start"} alignItems={"center"}>
             <HelpOutlineOutlinedIcon />
             <Body1>Install app on iPhone</Body1>
           </FlexRow>
-          <FlexRow justifyContent={"flex-end"} alignItems={"center"}>
-            <IconButton
-              sx={{ color: "white" }}
-              onClick={() => {
-                setShowBanner(false);
-              }}
-            >
-              <CloseIcon color={"inherit"} />
-            </IconButton>
-          </FlexRow>
+          <IconButton
+            sx={{ color: "white" }}
+            onClick={() => {
+              setShowBanner(false);
+            }}
+          >
+            <CloseIcon color={"inherit"} />
+          </IconButton>
         </FlexRow>
 
         <FlexRow justifyContent={"flex-start"} alignItems={"center"}>
