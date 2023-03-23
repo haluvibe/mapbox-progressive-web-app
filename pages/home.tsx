@@ -39,12 +39,23 @@ export default function Home() {
         <FlexColumn
           gap={2}
           sx={{
-            minHeight: "100vh",
             width: "100vw",
             p: 3,
           }}
         >
           <WelcomeCard name={"Jerome Bell"} />
+          <ButtonCard
+            bgColor={primaryAlpha}
+            onClick={() => router.push("/map")}
+            title={"Vehicle trip planner"}
+            subTitle={"Scan a registration plate of a vehicle to plan a trip"}
+            startIcon={
+              <IconContainer bgColor={"transparent"}>
+                <CheckboxIcon color={"primary"} />
+              </IconContainer>
+            }
+            endIcon={<ArrowForwardIcon color={"primary"} cursor={"pointer"} />}
+          />
           <ButtonCard
             startIcon={
               <VehicleFleetIcon bgColor={secondaryAlpha} color={secondary} />
@@ -67,18 +78,6 @@ export default function Home() {
             subTitle={
               "Submit and track the status of your Design Approval and Vehicle Approval applications"
             }
-          />
-          <ButtonCard
-            bgColor={primaryAlpha}
-            onClick={() => router.push("/map")}
-            title={"Vehicle trip planner"}
-            subTitle={"Scan a registration plate of a vehicle to plan a trip"}
-            startIcon={
-              <IconContainer bgColor={"transparent"}>
-                <CheckboxIcon color={"primary"} />
-              </IconContainer>
-            }
-            endIcon={<ArrowForwardIcon color={"primary"} cursor={"pointer"} />}
           />
         </FlexColumn>
       </main>

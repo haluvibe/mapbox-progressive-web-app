@@ -32,7 +32,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta name="description" content="Description" />
         <meta name="keywords" content="Keywords" />
-        <title>Next.js PWA Example</title>
+        <title>NHVR PWA Mapbox POC</title>
 
         <link rel="manifest" href="/manifest.json" />
         {/* Todo <link
@@ -55,11 +55,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <ThemeProvider>
           <CssBaseline />
           <MapProvider>
-          <DevicesProvider>
-            <PhotoProvider>
-              <Component {...pageProps} />
-            </PhotoProvider>
-          </DevicesProvider>
+            <DevicesProvider>
+              <PhotoProvider>
+                <Component {...pageProps} />
+              </PhotoProvider>
+            </DevicesProvider>
           </MapProvider>
           <AddToHomeScreen />
           <UpdatePWA />

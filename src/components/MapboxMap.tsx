@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import mapboxgl, { LngLatLike } from "mapbox-gl";
 import { Box } from "@mui/material";
 import { Geometry } from "geojson";

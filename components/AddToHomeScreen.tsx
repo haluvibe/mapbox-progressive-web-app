@@ -2,7 +2,15 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import IosShareIcon from "@mui/icons-material/IosShare";
-import { OutlinedButton } from "../src/components/DesignSystem/Library";
+import {
+  Body1,
+  FlexColumn,
+  FlexRow,
+} from "../src/components/DesignSystem/Library";
+import CloseIcon from "@mui/icons-material/Close";
+import LocalHospitalOutlinedIcon from "@mui/icons-material/LocalHospitalOutlined";
+import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import { BaseIconButton } from "../src/components/DesignSystem/Library/Buttons/BaseIconButton";
 
 interface AddToHomeScreenProps {}
 
@@ -37,7 +45,7 @@ const AddToHomeScreen: React.FC<AddToHomeScreenProps> = () => {
   return (
     <Box
       sx={{
-        display: "block",
+        display: "flex",
         position: "fixed",
         bottom: 0,
         left: 0,
@@ -49,15 +57,31 @@ const AddToHomeScreen: React.FC<AddToHomeScreenProps> = () => {
         zIndex: "tooltip",
       }}
     >
-      To install this app on your iPhone, tap the Share button <IosShareIcon />{" "}
-      and then "Add to Home Screen."
-      <OutlinedButton
-        onClick={() => {
-          setShowBanner(false);
-        }}
-      >
-        Close
-      </OutlinedButton>
+      <FlexColumn>
+        <FlexRow justifyContent={"space-between"}>
+          <Body1>
+            <HelpOutlineOutlinedIcon />
+            Install app on iPhone
+          </Body1>
+          <BaseIconButton
+            onClick={() => {
+              setShowBanner(false);
+            }}
+          >
+            <CloseIcon />
+          </BaseIconButton>
+        </FlexRow>
+        <FlexRow>
+          <Body1>
+            <IosShareIcon /> Tap share button
+          </Body1>
+        </FlexRow>
+        <FlexRow>
+          <Body1>
+            <LocalHospitalOutlinedIcon /> and then click “Add to Home Screen”
+          </Body1>
+        </FlexRow>
+      </FlexColumn>
     </Box>
   );
 };

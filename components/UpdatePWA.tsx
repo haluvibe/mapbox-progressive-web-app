@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Button, Box } from "@mui/material";
+import { Body1, FlexRow } from "../src/components/DesignSystem/Library";
+import CloseIcon from "@mui/icons-material/Close";
+import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import { BaseIconButton } from "../src/components/DesignSystem/Library/Buttons/BaseIconButton";
 
 const UpdatePWA: React.FC = () => {
-  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
     const checkForUpdates = async () => {
       const registration = await navigator.serviceWorker.getRegistration();
       if (registration && registration.waiting) {
-        setShowSnackbar(true);
+        setShowBanner(true);
       }
     };
     checkForUpdates();
 
     const onUpdate = () => {
-      setShowSnackbar(true);
+      setShowBanner(true);
     };
     navigator.serviceWorker.addEventListener("controllerchange", onUpdate);
 
@@ -29,10 +33,10 @@ const UpdatePWA: React.FC = () => {
     window.location.reload();
   };
 
-  return showSnackbar ? (
+  return showBanner ? (
     <Box
       sx={{
-        display: "block",
+        display: "flex",
         position: "fixed",
         bottom: 0,
         left: 0,
@@ -44,8 +48,19 @@ const UpdatePWA: React.FC = () => {
         zIndex: "tooltip",
       }}
     >
-      A new version of the app is available.{" "}
-      <Button color="inherit" size="small" onClick={handleUpdate}>
+      <FlexRow justifyContent={"space-between"}>
+        <Body1>
+          <HelpOutlineOutlinedIcon />A new version of the app is available.
+        </Body1>
+        <BaseIconButton
+          onClick={() => {
+            setShowBanner(false);
+          }}
+        >
+          <CloseIcon />
+        </BaseIconButton>
+      </FlexRow>{" "}
+      <Button color="inherit" size="small" onClick={handleUpdate} fullWidth>
         Update
       </Button>
     </Box>

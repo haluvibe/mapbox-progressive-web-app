@@ -8,6 +8,7 @@ import {
   DialogTitle,
   FlexColumn,
   FlexRow,
+  FormGrid,
   Subtitle1,
   TextButton,
 } from "../src/components/DesignSystem/Library";
@@ -91,11 +92,9 @@ const Camera: React.FC<CameraProps> = () => {
             style={{ maxHeight: "250px", maxWidth: "100%" }}
           />
         </FlexRow>
-        <FlexRow>
-          <ContainedButton onClick={handleClickOpen}>
-            Retake Photo
-          </ContainedButton>
-        </FlexRow>
+        <TextButton fullWidth onClick={handleClickOpen}>
+          Retake Photo
+        </TextButton>
       </FlexColumn>
     );
   } else {
@@ -163,17 +162,18 @@ const Camera: React.FC<CameraProps> = () => {
             </FlexColumn>
           </DialogContent>
           <DialogActions>
-            <FlexRow>
-              <ContainedButton onClick={takePhoto}>
+            <FlexRow width={"100%"} justifyContent={"flex-end"}>
+              <ContainedButton
+                onClick={takePhoto}
+                disabled={!videoRef?.current || !cameraStream}
+                fullWidth
+              >
                 Take picture
               </ContainedButton>
 
-              {/* {showSwitchCameraButton && (
-                <ContainedButton onClick={switchCamera}>
-                  Switch front/rear camera
-                </ContainedButton>
-              )} */}
-              <TextButton onClick={handleClose}>Close</TextButton>
+              <TextButton fullWidth onClick={handleClose}>
+                Close
+              </TextButton>
             </FlexRow>
           </DialogActions>
         </Dialog>

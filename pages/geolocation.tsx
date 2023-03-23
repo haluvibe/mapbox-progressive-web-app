@@ -42,6 +42,7 @@ const RequestGeolocationPermission: NextPage = () => {
         minHeight: "100vh",
         textAlign: "center",
         gap: 2,
+        p: 3,
       }}
     >
       <Image
