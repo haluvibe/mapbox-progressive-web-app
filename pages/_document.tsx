@@ -1,20 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
-window.addEventListener("load", () => {
-  // Is service worker available?
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker
-      .register("/serviceWorker.js")
-      .then(() => {
-        console.log("Service worker registered!");
-      })
-      .catch((error) => {
-        console.warn("Error registering service worker:");
-        console.warn(error);
-      });
-  }
-});
-
 export default function Document() {
   return (
     <Html>
@@ -114,42 +99,6 @@ export default function Document() {
         <meta property="og:site_name" content="NHVR pwa poc" />
         <meta property="og:url" content="https://yourdomain.com" />
         <meta property="og:image" content="https://yourdomain.com/icons/apple-touch-icon.png" /> */}
-
-        <link
-          rel="apple-touch-startup-image"
-          href="/images/apple_splash_2048.png"
-          sizes="2048x2732"
-        />
-        <link
-          rel="apple-touch-startup-image"
-          href="/images/apple_splash_1668.png"
-          sizes="1668x2224"
-        />
-        <link
-          rel="apple-touch-startup-image"
-          href="/images/apple_splash_1536.png"
-          sizes="1536x2048"
-        />
-        <link
-          rel="apple-touch-startup-image"
-          href="/images/apple_splash_1125.png"
-          sizes="1125x2436"
-        />
-        <link
-          rel="apple-touch-startup-image"
-          href="/images/apple_splash_1242.png"
-          sizes="1242x2208"
-        />
-        <link
-          rel="apple-touch-startup-image"
-          href="/images/apple_splash_750.png"
-          sizes="750x1334"
-        />
-        <link
-          rel="apple-touch-startup-image"
-          href="/images/apple_splash_640.png"
-          sizes="640x1136"
-        />
       </Head>
       <body>
         <Main />
