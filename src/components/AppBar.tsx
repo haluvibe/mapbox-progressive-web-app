@@ -13,19 +13,19 @@ const AppBar: FC<Props> = ({}: Props): JSX.Element => {
     <MuiAppBar
       sx={{
         backgroundColor: theme.palette.background.paper,
-        boxShadow: "none",
         borderBottom: `1px solid ${theme.palette.divider}`,
       }}
+      elevation={1}
       position={"sticky"}
     >
-      <Toolbar sx={{ px: 3 }}>
-        <FlexRow flexWrap={"nowrap"} width={"100%"}>
+      <Toolbar sx={{ p: 3 }}>
+        <FlexRow flexWrap={"nowrap"} width={"100%"} justifyContent={"center"}>
           <Flex width={"50%"}>
             <RouterLink>
               <NVHRLogo />
             </RouterLink>
           </Flex>
-          <Flex width={"50%"} justifyContent={"flex-end"}>
+          <Flex width={"50%"} justifyContent={"flex-end"} alignItems={"center"}>
             <MenuIcon sx={{ color: "rgba(0, 0, 0, 0.54)" }} />
           </Flex>
         </FlexRow>
