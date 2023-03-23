@@ -1,8 +1,8 @@
 {
   "name": "NHVR progressive web app POC",
   "short_name": "NHVR pwa poc",
-  "theme_color": "#06629d",
-  "background_color": "#06629d",
+  "theme_color": "#0F2D52",
+  "background_color": "#0F2D52",
   "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/",

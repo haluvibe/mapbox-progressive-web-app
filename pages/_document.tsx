@@ -31,7 +31,7 @@ export default function Document() {
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#06629d" />
+        <meta name="theme-color" content="#0F2D52" />
 
         <meta name="application-name" content="NHVR pwa poc" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -44,9 +44,9 @@ export default function Document() {
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-config" content="/icons/browserconfig.xml" />
-        <meta name="msapplication-TileColor" content="#06629d" />
+        <meta name="msapplication-TileColor" content="#0F2D52" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="theme-color" content="#06629d" />
+        <meta name="theme-color" content="#0F2D52" />
         <link rel="apple-touch-icon" href="/apple-touch-iphone.png" />
         <link
           rel="apple-touch-icon"
