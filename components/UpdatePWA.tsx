@@ -67,6 +67,10 @@ const UpdatePWA: React.FC = () => {
     window.location.reload();
   };
 
+  useEffect(() => {
+    alert(`isInstalled: ${isInstalled}`);
+  }, []);
+
   return isInstalled && showBanner ? (
     <Box
       sx={{
