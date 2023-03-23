@@ -58,10 +58,9 @@ const AddToHomeScreen: React.FC<AddToHomeScreenProps> = () => {
       }}
     >
       <FlexColumn>
-        <FlexRow justifyContent={"space-between"}>
+        <FlexRow justifyContent={"space-between"} width={"100%"}>
           <Body1>
-            <HelpOutlineOutlinedIcon />
-            Install app on iPhone
+            <HelpOutlineOutlinedIcon /> Install app on iPhone
           </Body1>
           <BaseIconButton
             onClick={() => {
