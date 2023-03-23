@@ -34,7 +34,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <meta name="description" content="Description" />
         <meta name="keywords" content="Keywords" />
         <title>NHVR PWA Mapbox POC</title>
-        <link rel="manifest" href="/manifest.json" />
         <link
           rel="apple-touch-startup-image"
           href="/images/apple_splash_2048.png"
