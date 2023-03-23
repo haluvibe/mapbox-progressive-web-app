@@ -1,5 +1,20 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
+window.addEventListener("load", () => {
+  // Is service worker available?
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("/serviceWorker.js")
+      .then(() => {
+        console.log("Service worker registered!");
+      })
+      .catch((error) => {
+        console.warn("Error registering service worker:");
+        console.warn(error);
+      });
+  }
+});
+
 export default function Document() {
   return (
     <Html>
