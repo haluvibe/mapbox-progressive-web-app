@@ -15,16 +15,14 @@ interface MapContext {
 }
 
 export interface RouteData {
+  id: string;
   totalDistance: string;
   totalTime: string;
   waypoints: LngLatLike[];
-  routes: {
-    id: string;
-    geometry: {
-      type: "LineString";
-      coordinates: LngLatLike[];
-    };
-  }[];
+  geometry: {
+    type: "LineString";
+    coordinates: LngLatLike[];
+  };
 }
 
 const MapContext = createContext<MapContext | null>(null);

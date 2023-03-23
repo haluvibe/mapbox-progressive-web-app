@@ -56,20 +56,16 @@ function MapboxMap() {
 
     if (mapContext?.routeData) {
       // We need to keep track of the layer ids painted for cleanup
-      setLayerIds(mapContext.routeData.routes.map((route) => route.id));
-      mapContext.routeData.routes.map((route, index) =>
-        // Paint routes if they exist in context
-        addRoute(
-          route.id,
-          route.geometry as Geometry, // is this ok?
-          index % 2 === 0
-            ? theme.palette.primary.light
-            : theme.palette.secondary.light
-        )
+      setLayerIds([mapContext.routeData.id]);
+      // Paint routes if they exist in context
+      addRoute(
+        mapContext.routeData.id,
+        mapContext.routeData.geometry as Geometry,
+        theme.palette.primary.light
       );
       // Add a marker for the start and end points
       mapContext.routeData.waypoints.map((wp) => addMarker(wp));
-      map.setCenter(mapContext.routeData.waypoints[0]);
+      map.setCenter(mapContext.routeData.waypoints[0]); // TODO: how to get correct center and zoom to fit whole route on map?
     } else {
       // We need to keep track of the layer ids painted for cleanup
       setLayerIds([]);

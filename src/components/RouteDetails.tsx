@@ -1,11 +1,9 @@
 import React, { FC } from "react";
 import {
-  CloseIcon,
   FlexColumn,
   Card,
   CardContent,
   FlexRow,
-  Flex,
   Box,
 } from "./DesignSystem/Library";
 import RouteDetailsCard from "./RouteDetailsCard";
@@ -40,19 +38,15 @@ const RouteDetails: FC<Props> = ({}: Props): JSX.Element => {
             </CardContent>
           </Card>
         )}
-        {!mapContext?.isLoading &&
-          mapContext?.routeData?.routes.map((route, index) => {
-            return (
-              <Box key={route.id} sx={{ flexShrink: 0 }}>
-                <RouteDetailsCard
-                  name={`Route ${index + 1}`}
-                  distance={`${mapContext?.routeData?.totalDistance} km`}
-                  travelTime={`${mapContext?.routeData?.totalTime} mins`}
-                  secondary={index % 2 === 0}
-                />
-              </Box>
-            );
-          })}
+        {!mapContext?.isLoading && mapContext?.routeData && (
+          <Box key={mapContext.routeData.id} sx={{ flexShrink: 0 }}>
+            <RouteDetailsCard
+              name={`Route 1`}
+              distance={`${mapContext.routeData.totalDistance} km`}
+              travelTime={`${mapContext.routeData.totalTime} mins`}
+            />
+          </Box>
+        )}
       </>
     </FlexColumn>
   );
