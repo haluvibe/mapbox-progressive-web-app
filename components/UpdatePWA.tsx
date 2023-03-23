@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Button, Box } from "@mui/material";
-import { Body1, FlexRow } from "../src/components/DesignSystem/Library";
+import { Box, IconButton } from "@mui/material";
+import {
+  Body1,
+  FlexRow,
+  OutlinedButton,
+} from "../src/components/DesignSystem/Library";
 import CloseIcon from "@mui/icons-material/Close";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import { BaseIconButton } from "../src/components/DesignSystem/Library/Buttons/BaseIconButton";
 
 const UpdatePWA: React.FC = () => {
   const [showBanner, setShowBanner] = useState(false);
@@ -41,7 +44,7 @@ const UpdatePWA: React.FC = () => {
   return isInstalled && showBanner ? (
     <Box
       sx={{
-        display: "flex",
+        display: "block",
         position: "fixed",
         bottom: 0,
         left: 0,
@@ -53,21 +56,25 @@ const UpdatePWA: React.FC = () => {
         zIndex: "tooltip",
       }}
     >
-      <FlexRow justifyContent={"space-between"}>
-        <Body1>
-          <HelpOutlineOutlinedIcon />A new version of the app is available.
-        </Body1>
-        <BaseIconButton
-          onClick={() => {
-            setShowBanner(false);
-          }}
-        >
-          <CloseIcon />
-        </BaseIconButton>
-      </FlexRow>{" "}
-      <Button color="inherit" size="small" onClick={handleUpdate} fullWidth>
-        Update
-      </Button>
+      <FlexRow justifyContent={"space-between"} alignItems={"center"}>
+        <FlexRow justifyContent={"flex-start"} alignItems={"center"}>
+          <HelpOutlineOutlinedIcon />
+          <Body1>A new version of the app is available.</Body1>
+        </FlexRow>
+        <FlexRow justifyContent={"flex-end"} alignItems={"center"}>
+          <OutlinedButton color="inherit" size="small" onClick={handleUpdate}>
+            Update
+          </OutlinedButton>
+          <IconButton
+            sx={{ color: "white" }}
+            onClick={() => {
+              setShowBanner(false);
+            }}
+          >
+            <CloseIcon color={"inherit"} />
+          </IconButton>
+        </FlexRow>
+      </FlexRow>
     </Box>
   ) : null;
 };

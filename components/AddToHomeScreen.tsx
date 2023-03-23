@@ -1,11 +1,12 @@
 // AddToHomeScreen.tsx
 import React, { useEffect, useState } from "react";
-import { Box } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import IosShareIcon from "@mui/icons-material/IosShare";
 import {
   Body1,
   FlexColumn,
   FlexRow,
+  OutlinedButton,
 } from "../src/components/DesignSystem/Library";
 import CloseIcon from "@mui/icons-material/Close";
 import LocalHospitalOutlinedIcon from "@mui/icons-material/LocalHospitalOutlined";
@@ -58,27 +59,31 @@ const AddToHomeScreen: React.FC<AddToHomeScreenProps> = () => {
       }}
     >
       <FlexColumn>
-        <FlexRow justifyContent={"space-between"} width={"100%"}>
-          <Body1>
-            <HelpOutlineOutlinedIcon /> Install app on iPhone
-          </Body1>
-          <BaseIconButton
-            onClick={() => {
-              setShowBanner(false);
-            }}
-          >
-            <CloseIcon />
-          </BaseIconButton>
+        <FlexRow justifyContent={"space-between"} alignItems={"center"}>
+          <FlexRow justifyContent={"flex-start"} alignItems={"center"}>
+            <HelpOutlineOutlinedIcon />
+            <Body1>Install app on iPhone</Body1>
+          </FlexRow>
+          <FlexRow justifyContent={"flex-end"} alignItems={"center"}>
+            <IconButton
+              sx={{ color: "white" }}
+              onClick={() => {
+                setShowBanner(false);
+              }}
+            >
+              <CloseIcon color={"inherit"} />
+            </IconButton>
+          </FlexRow>
         </FlexRow>
-        <FlexRow>
-          <Body1>
-            <IosShareIcon /> Tap share button
-          </Body1>
+
+        <FlexRow justifyContent={"flex-start"} alignItems={"center"}>
+          <IosShareIcon />
+          <Body1>Tap share button</Body1>
         </FlexRow>
-        <FlexRow>
-          <Body1>
-            <LocalHospitalOutlinedIcon /> and then click “Add to Home Screen”
-          </Body1>
+
+        <FlexRow justifyContent={"flex-start"} alignItems={"center"}>
+          <LocalHospitalOutlinedIcon />
+          <Body1>and then click “Add to Home Screen”</Body1>
         </FlexRow>
       </FlexColumn>
     </Box>
