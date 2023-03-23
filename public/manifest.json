@@ -65,5 +65,95 @@
     "url": "/home",
     "icons": [{ "src": "/icons/light-icon-192x192.png", "sizes": "192x192" }]
   }
- ]
+ ],
+ "splash_pages": {
+    "apple": [
+      {
+        "src": "/images/apple_splash_2048.png",
+        "sizes": "2048x2732",
+        "type": "image/png",
+        "media": "(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+      },
+      {
+        "src": "/images/apple_splash_1668.png",
+        "sizes": "1668x2224",
+        "type": "image/png",
+        "media": "(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+      },
+      {
+        "src": "/images/apple_splash_1536.png",
+        "sizes": "1536x2048",
+        "type": "image/png",
+        "media": "(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 1)"
+      },
+      {
+        "src": "/images/apple_splash_1125.png",
+        "sizes": "1125x2436",
+        "type": "image/png",
+        "media": "(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+      },
+      {
+        "src": "/images/apple_splash_1242.png",
+        "sizes": "1242x2208",
+        "type": "image/png",
+        "media": "(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)"
+      },
+      {
+        "src": "/images/apple_splash_750.png",
+        "sizes": "750x1334",
+        "type": "image/png",
+        "media": "(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+      },
+      {
+        "src": "/images/apple_splash_640.png",
+        "sizes": "640x1136",
+        "type": "image/png",
+        "media": "(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+      }
+    ],
+    "android": [
+      {
+        "src": "/images/android_splash_1280.png",
+        "sizes": "1280x1920",
+        "density": "1.5"
+      },
+      {
+        "src": "/images/android_splash_1920.png",
+        "sizes": "1920x2560",
+        "density": "2"
+      },
+      {
+        "src": "/images/android_splash_1280.png",
+        "sizes": "1280x1920",
+        "density": "2.5"
+      },
+      {
+        "src": "/images/android_splash_1920.png",
+        "sizes": "1920x2560",
+        "density": "3"
+      }
+    ],
+    "desktop": [
+      {
+        "src": "/images/desktop_splash_1024.png",
+        "sizes": "1024x768",
+        "media": "(min-width: 768px) and (max-width: 1024px) and (orientation: landscape)"
+      },
+      {
+        "src": "/images/desktop_splash_1280.png",
+        "sizes": "1280x720",
+        "media": "(min-width:1024px) and (max-width: 1366px) and (orientation: landscape)"
+      },
+      {
+      "src": "/images/desktop_splash_1366.png",
+      "sizes": "1366x768",
+      "media": "(min-width: 1366px) and (max-width: 1920px) and (orientation: landscape)"
+      },
+      {
+      "src": "/images/desktop_splash_1920.png",
+      "sizes": "1920x1080",
+      "media": "(min-width: 1920px) and (orientation: landscape)"
+      }
+    ]
+  }
 }
