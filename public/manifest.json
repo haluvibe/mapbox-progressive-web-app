@@ -56,14 +56,14 @@
     "short_name": "Index",
     "description": "An example shortcut to the index page",
     "url": "/",
-    "icons": [{ "src": "/icon/light-icon-192x192.png", "sizes": "192x192" }]
+    "icons": [{ "src": "/icons/light-icon-192x192.png", "sizes": "192x192" }]
   },
   {
     "name": "Home page shortcut",
     "short_name": "Home",
     "description": "An example shortcut to the home page",
     "url": "/home",
-    "icons": [{ "src": "/icon/light-icon-192x192.png", "sizes": "192x192" }]
+    "icons": [{ "src": "/icons/light-icon-192x192.png", "sizes": "192x192" }]
   }
  ]
 }

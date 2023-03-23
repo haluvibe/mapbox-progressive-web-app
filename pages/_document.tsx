@@ -86,19 +86,6 @@ export default function Document() {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
         />
-
-        {/* <meta name="twitter:card" content="summary" />
-        <meta name="twitter:url" content="https://yourdomain.com" />
-        <meta name="twitter:title" content="NHVR pwa poc" />
-        <meta name="twitter:description" content="Best NHVR pwa poc in the world" />
-        <meta name="twitter:image" content="https://yourdomain.com/icons/android-chrome-192x192.png" />
-        <meta name="twitter:creator" content="@DavidWShadow" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="NHVR pwa poc" />
-        <meta property="og:description" content="Best NHVR pwa poc in the world" />
-        <meta property="og:site_name" content="NHVR pwa poc" />
-        <meta property="og:url" content="https://yourdomain.com" />
-        <meta property="og:image" content="https://yourdomain.com/icons/apple-touch-icon.png" /> */}
       </Head>
       <body>
         <Main />
