@@ -37,6 +37,9 @@ const UpdatePWA: React.FC = () => {
       setShowBanner(true);
     };
 
+    // Add this line
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+
     return () => {
       window.removeEventListener(
         "beforeinstallprompt",
