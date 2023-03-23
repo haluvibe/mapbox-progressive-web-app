@@ -51,6 +51,7 @@ const UpdatePWA: React.FC = () => {
   }, []);
 
   const handleInstall = () => {
+    setShowBanner(false);
     if (deferredPrompt) {
       deferredPrompt.prompt();
       deferredPrompt.userChoice.then((choiceResult: any) => {
