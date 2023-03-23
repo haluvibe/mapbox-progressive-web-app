@@ -24,7 +24,8 @@ const UpdatePWA: React.FC = () => {
     navigator.serviceWorker.addEventListener("controllerchange", onUpdate);
 
     const mediaQuery = window.matchMedia("(display-mode: standalone)");
-    setIsInstalled(mediaQuery.matches);
+    const isStandalone = window.navigator.standalone;
+    setIsInstalled(mediaQuery.matches || isStandalone);
 
     return () => {
       navigator.serviceWorker.removeEventListener("controllerchange", onUpdate);
@@ -57,19 +58,16 @@ const UpdatePWA: React.FC = () => {
           <HelpOutlineOutlinedIcon />A new version of the app is available.
         </Body1>
         <BaseIconButton
-          color={"inherit"}
           onClick={() => {
             setShowBanner(false);
           }}
         >
           <CloseIcon />
         </BaseIconButton>
-      </FlexRow>
-      <FlexRow>
-        <Button color="inherit" size="small" onClick={handleUpdate} fullWidth>
-          Update
-        </Button>
-      </FlexRow>
+      </FlexRow>{" "}
+      <Button color="inherit" size="small" onClick={handleUpdate} fullWidth>
+        Update
+      </Button>
     </Box>
   ) : null;
 };
