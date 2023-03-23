@@ -18,6 +18,7 @@ import TripDetails from "../src/components/TripDetails";
 import RouteDetails from "../src/components/RouteDetails";
 import { routeData } from "../src/data/routeData";
 import { useMapContext } from "../src/components/MapContext";
+import { fetchRouteData } from "../src/utils/fetchRouteData";
 
 interface Props {}
 
@@ -46,15 +47,15 @@ const Map: FC<Props> = ({}: Props): JSX.Element => {
     setIsTripDetailsOpen(false);
   };
 
-  const onShowRoutes = () => {
-    mapContext?.addRoutes(routeData as any);
+  const onShowRoutes = async () => {
     setIsTripDetailsOpen(false);
     setIsRouteDetailsOpen(true);
+    mapContext?.showRoutes();
   };
 
   const onCloseRoutes = () => {
-    mapContext?.clearRoutes();
     setIsTripDetailsOpen(true);
+    mapContext?.clearRoutes();
     setIsRouteDetailsOpen(false);
   };
 
@@ -79,7 +80,13 @@ const Map: FC<Props> = ({}: Props): JSX.Element => {
       >
         <VehicleDetails onPlanTrip={onPlanTrip} />
       </Drawer>
-      <Drawer open={isTripDetailsOpen} anchor={"bottom"}>
+      <Drawer
+        open={isTripDetailsOpen}
+        anchor={"bottom"}
+        header={
+          <ArrowBackIcon onClick={onTripDetailsBack} cursor={"pointer"} />
+        }
+      >
         <TripDetails
           onTripDetailsBack={onTripDetailsBack}
           onShowRoutes={onShowRoutes}
@@ -89,8 +96,9 @@ const Map: FC<Props> = ({}: Props): JSX.Element => {
         variant={"persistent"}
         open={isRouteDetailsOpen}
         anchor={"bottom"}
+        header={<CloseIcon cursor={"pointer"} onClick={onCloseRoutes} />}
       >
-        <RouteDetails onCloseRoutes={onCloseRoutes} />
+        <RouteDetails />
       </Drawer>
     </Box>
   );

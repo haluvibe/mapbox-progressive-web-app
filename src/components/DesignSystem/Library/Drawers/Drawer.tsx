@@ -26,8 +26,8 @@ const drawerDimensionMap = {
 const topDownDimensions = {
   width: "100vw",
   height: "auto",
-  headerHeight: 0,
-  footerHeight: 0,
+  headerHeight: 35,
+  footerHeight: 35,
 };
 
 export const Drawer = ({

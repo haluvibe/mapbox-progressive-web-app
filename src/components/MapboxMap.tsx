@@ -54,22 +54,25 @@ function MapboxMap() {
       return;
     }
 
-    if (mapContext?.routeDetails.length) {
-      // Paint routes if they exist in context
-      setLayerIds(mapContext.routeDetails.map((_, index) => `${index + 1}`));
-      mapContext.routeDetails.map(({ routes, waypoints }, index) => {
-        const routeId = index + 1;
+    if (mapContext?.routeData) {
+      // We need to keep track of the layer ids painted for cleanup
+      setLayerIds(mapContext.routeData.routes.map((route) => route.id));
+      mapContext.routeData.routes.map((route, index) =>
+        // Paint routes if they exist in context
         addRoute(
-          routeId.toString(),
-          routes[0].geometry as Geometry,
-          routeId % 2 === 0
+          route.id,
+          route.geometry as Geometry, // is this ok?
+          index % 2 === 0
             ? theme.palette.primary.light
             : theme.palette.secondary.light
-        );
-        // We need to keep track of the layer ids painted for cleanup
-        waypoints.map((wp) => addMarker(wp.location));
-      });
+        )
+      );
+      // Add a marker for the start and end points
+      mapContext.routeData.waypoints.map((wp) => addMarker(wp));
+      map.setCenter(mapContext.routeData.waypoints[0]);
     } else {
+      // We need to keep track of the layer ids painted for cleanup
+      setLayerIds([]);
       // Remove existing routes if there is nothing in the context
       layerIds.map((id) => {
         if (map.getSource(id)) {
@@ -77,8 +80,6 @@ function MapboxMap() {
           map.removeSource(id);
         }
       });
-      // We need to keep track of the layer ids painted for cleanup
-      setLayerIds([]);
     }
   }, [isMapLoaded, mapContext]);
 
