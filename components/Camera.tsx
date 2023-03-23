@@ -17,6 +17,8 @@ import { alpha } from "@mui/system";
 import { Link, Avatar } from "@mui/material";
 import { usePhoto } from "../providers/PhotoProvider";
 import { useDevices } from "../providers/DevicesProvider";
+import { useMapContext } from "../src/components/MapContext";
+import { fetchLicensePlate } from "../src/utils/fetchLicensePlate";
 
 interface CameraProps {}
 

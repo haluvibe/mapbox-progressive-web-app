@@ -19,11 +19,14 @@ import RouteDetails from "../src/components/RouteDetails";
 import { routeData } from "../src/data/routeData";
 import { useMapContext } from "../src/components/MapContext";
 import { fetchRouteData } from "../src/utils/fetchRouteData";
+import IconContainer from "../src/components/Icons/IconContainer";
+import { usePhoto } from "../providers/PhotoProvider";
 
 interface Props {}
 
 const Map: FC<Props> = ({}: Props): JSX.Element => {
   const mapContext = useMapContext();
+  const photoContext = usePhoto();
 
   const theme = useTheme();
   const largeScreen = useMediaQuery(theme.breakpoints.up("md"));
@@ -75,6 +78,16 @@ const Map: FC<Props> = ({}: Props): JSX.Element => {
           <FlexRow>
             <ArrowBackIcon cursor={"pointer"} onClick={onVehicleDetailsBack} />
             <Body1>Vehicle details</Body1>
+            <Box
+              sx={{
+                height: "24px",
+                width: "24px",
+                ":hover": {
+                  backgroundColor: "rgba(0,0,0,0.1)",
+                },
+              }}
+              onClick={photoContext.loadMockData}
+            />
           </FlexRow>
         }
       >
