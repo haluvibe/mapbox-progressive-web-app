@@ -7,6 +7,7 @@ import { BaseIconButton } from "../src/components/DesignSystem/Library/Buttons/B
 
 const UpdatePWA: React.FC = () => {
   const [showBanner, setShowBanner] = useState(false);
+  const [isInstalled, setIsInstalled] = useState(false);
 
   useEffect(() => {
     const checkForUpdates = async () => {
@@ -22,6 +23,9 @@ const UpdatePWA: React.FC = () => {
     };
     navigator.serviceWorker.addEventListener("controllerchange", onUpdate);
 
+    const mediaQuery = window.matchMedia("(display-mode: standalone)");
+    setIsInstalled(mediaQuery.matches);
+
     return () => {
       navigator.serviceWorker.removeEventListener("controllerchange", onUpdate);
     };
@@ -33,7 +37,7 @@ const UpdatePWA: React.FC = () => {
     window.location.reload();
   };
 
-  return showBanner ? (
+  return isInstalled && showBanner ? (
     <Box
       sx={{
         display: "flex",
@@ -53,16 +57,19 @@ const UpdatePWA: React.FC = () => {
           <HelpOutlineOutlinedIcon />A new version of the app is available.
         </Body1>
         <BaseIconButton
+          color={"inherit"}
           onClick={() => {
             setShowBanner(false);
           }}
         >
           <CloseIcon />
         </BaseIconButton>
-      </FlexRow>{" "}
-      <Button color="inherit" size="small" onClick={handleUpdate} fullWidth>
-        Update
-      </Button>
+      </FlexRow>
+      <FlexRow>
+        <Button color="inherit" size="small" onClick={handleUpdate} fullWidth>
+          Update
+        </Button>
+      </FlexRow>
     </Box>
   ) : null;
 };
