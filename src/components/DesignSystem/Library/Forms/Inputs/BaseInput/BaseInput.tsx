@@ -1,36 +1,38 @@
-import React from 'react';
+import React, { ForwardedRef, forwardRef, RefObject } from "react";
 import {
   TextField as MuiTextField,
   TextFieldProps as MuiTextFieldProps,
-} from '@mui/material';
-import {FormControl} from '../FormControl';
-import {RestrictedVisualProps} from '../../../types';
-import {UseGridItemStyles, useGridItemStyles} from '../../../';
+} from "@mui/material";
+import { FormControl } from "../FormControl";
+import { RestrictedVisualProps } from "../../../types";
+import { UseGridItemStyles, useGridItemStyles } from "../../../";
 
 export type BaseInputProps = UseGridItemStyles &
   Omit<
     MuiTextFieldProps,
-    | 'variant'
-    | 'children'
-    | 'margin'
-    | 'color'
-    | 'size'
-    | 'fullWidth'
-    | 'select'
-    | 'SelectProps'
-    | 'defaultValue'
+    | "variant"
+    | "children"
+    | "margin"
+    | "color"
+    | "size"
+    | "fullWidth"
+    | "select"
+    | "SelectProps"
+    | "defaultValue"
     | RestrictedVisualProps
   >;
 
-export const BaseInput = ({span, ...props}: BaseInputProps) => {
-  const sx = useGridItemStyles(span);
-  return (
-    <>
-      <FormControl sx={sx}>
-        <MuiTextField {...props} fullWidth />
-      </FormControl>
-    </>
-  );
-};
+export const BaseInput = forwardRef(
+  ({ span, ...props }: BaseInputProps, ref: ForwardedRef<HTMLDivElement>) => {
+    const sx = useGridItemStyles(span);
+    return (
+      <>
+        <FormControl sx={sx}>
+          <MuiTextField inputRef={ref} {...props} fullWidth />
+        </FormControl>
+      </>
+    );
+  }
+);
 
-BaseInput.displayName = 'BaseInput';
+BaseInput.displayName = "BaseInput";

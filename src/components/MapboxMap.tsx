@@ -21,7 +21,7 @@ function MapboxMap() {
   const [lat, setLat] = useState(
     devicesContext.geolocationData?.coords.latitude ?? -37.80511
   );
-  const [zoom, setZoom] = useState(6);
+  const [zoom, setZoom] = useState(15);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
   const [layerIds, setLayerIds] = useState<string[]>([]);
 
@@ -67,7 +67,7 @@ function MapboxMap() {
             : theme.palette.secondary.light
         );
         // We need to keep track of the layer ids painted for cleanup
-        addMarker(waypoints[0].location);
+        waypoints.map((wp) => addMarker(wp.location));
       });
     } else {
       // Remove existing routes if there is nothing in the context

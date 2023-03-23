@@ -6,6 +6,7 @@ import { ThemeSelectionProvider } from "../src/theming/ThemeSelectionProvider";
 import { backwardsCompatibleThemes } from "../src/theming/themes";
 import { PhotoProvider } from "../providers/PhotoProvider";
 import { MapProvider } from "../src/components/MapContext";
+import "./global-styles.css";
 import dynamic from "next/dynamic";
 
 const AddToHomeScreen = dynamic(() => import("../components/AddToHomeScreen"), {
