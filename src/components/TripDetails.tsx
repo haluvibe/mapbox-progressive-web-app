@@ -37,10 +37,7 @@ export interface GooglePlace {
   geometry: { location: { lat: () => number; lng: () => number } };
 }
 
-const TripDetails: FC<Props> = ({
-  onTripDetailsBack,
-  onShowRoutes,
-}: Props): JSX.Element => {
+const TripDetails: FC<Props> = ({ onShowRoutes }: Props): JSX.Element => {
   const [isTopAutocompleteOpen, setIsTopAutocompleteOpen] = useState(false);
   const [isBottomAutocompleteOpen, setIsBottomAutocompleteOpen] =
     useState(false);
@@ -63,10 +60,9 @@ const TripDetails: FC<Props> = ({
     <FlexColumn
       gap={2}
       minHeight={
-        isTopAutocompleteOpen ? 330 : isBottomAutocompleteOpen ? 400 : "100%"
+        isTopAutocompleteOpen ? 330 : isBottomAutocompleteOpen ? 400 : "auto"
       }
     >
-      <ArrowBackIcon onClick={onTripDetailsBack} cursor={"pointer"} />
       <Box fontWeight={700}>Enter your trip details</Box>
       <TextInput
         ref={sourceRef}

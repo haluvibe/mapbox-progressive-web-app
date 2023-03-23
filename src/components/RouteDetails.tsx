@@ -5,23 +5,22 @@ import {
   Card,
   CardContent,
   FlexRow,
+  Flex,
+  Box,
 } from "./DesignSystem/Library";
 import RouteDetailsCard from "./RouteDetailsCard";
 import { Divider, Skeleton } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useMapContext } from "./MapContext";
 
-interface Props {
-  onCloseRoutes: () => void;
-}
+interface Props {}
 
-const RouteDetails: FC<Props> = ({ onCloseRoutes }: Props): JSX.Element => {
+const RouteDetails: FC<Props> = ({}: Props): JSX.Element => {
   const { palette } = useTheme();
   const mapContext = useMapContext();
 
   return (
-    <FlexColumn gap={2} justifyContent={"center"}>
-      <CloseIcon cursor={"pointer"} onClick={onCloseRoutes} />
+    <FlexColumn gap={2} flexWrap={"nowrap"} sx={{ maxHeight: "45vh" }}>
       <>
         {mapContext?.isLoading && (
           <Card bgColor={palette.background.default}>
@@ -42,19 +41,16 @@ const RouteDetails: FC<Props> = ({ onCloseRoutes }: Props): JSX.Element => {
           </Card>
         )}
         {!mapContext?.isLoading &&
-          mapContext?.routeDetails.map((route, index) => {
-            const routeIndex = index + 1;
-            const distance = (route.routes[0].distance * 0.001).toFixed(1);
-            const duration = Math.round(route.routes[0].duration / 60);
-
+          mapContext?.routeData?.routes.map((route, index) => {
             return (
-              <RouteDetailsCard
-                key={routeIndex}
-                name={`Route ${routeIndex}`}
-                distance={`${distance} km`}
-                travelTime={`${duration} mins`}
-                secondary={routeIndex % 2 === 0}
-              />
+              <Box key={route.id} sx={{ flexShrink: 0 }}>
+                <RouteDetailsCard
+                  name={`Route ${index + 1}`}
+                  distance={`${mapContext?.routeData?.totalDistance} km`}
+                  travelTime={`${mapContext?.routeData?.totalTime} mins`}
+                  secondary={index % 2 === 0}
+                />
+              </Box>
             );
           })}
       </>
