@@ -22,7 +22,7 @@ interface Props {
 }
 
 const VehicleDetails: FC<Props> = ({ onPlanTrip }: Props): JSX.Element => {
-  const { photo, isLoading, hasLoaded } = usePhoto();
+  const { photo, isLoading, hasLoaded, licensePlate } = usePhoto();
 
   return (
     <>
@@ -73,7 +73,11 @@ const VehicleDetails: FC<Props> = ({ onPlanTrip }: Props): JSX.Element => {
           <>
             <FlexColumn>
               <Body2>Registration number</Body2>
-              <Body1>7MAZ7</Body1>
+              <Body1>{licensePlate}</Body1>
+            </FlexColumn>
+            <FlexColumn>
+              <Body2>Network ID</Body2>
+              <Body1>{"63740002"}</Body1>
             </FlexColumn>
             <FlexColumn>
               <Body2>State</Body2>
@@ -89,7 +93,7 @@ const VehicleDetails: FC<Props> = ({ onPlanTrip }: Props): JSX.Element => {
               <Image
                 style={{
                   objectFit: "contain",
-                  width: "auto",
+                  width: "100%",
                   height: "120px",
                 }}
                 src={PrimeMoverVehicleImg}
