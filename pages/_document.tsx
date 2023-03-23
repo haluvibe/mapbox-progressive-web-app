@@ -4,6 +4,8 @@ export default function Document() {
   return (
     <Html>
       <Head>
+        <link rel="manifest" href="/manifest.json" />
+
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
@@ -45,7 +47,6 @@ export default function Document() {
         <meta name="msapplication-TileColor" content="#06629d" />
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="theme-color" content="#06629d" />
-
         <link rel="apple-touch-icon" href="/apple-touch-iphone.png" />
         <link
           rel="apple-touch-icon"
@@ -75,7 +76,6 @@ export default function Document() {
           sizes="16x16"
           href="/icons/favicon-16x16.png"
         />
-        <link rel="manifest" href="/manifest.json" />
         <link
           rel="mask-icon"
           href="/icons/safari-pinned-tab.svg"
