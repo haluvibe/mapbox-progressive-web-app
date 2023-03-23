@@ -58,9 +58,17 @@ const AddToHomeScreen: React.FC<AddToHomeScreenProps> = () => {
         zIndex: "tooltip",
       }}
     >
-      <FlexColumn>
-        <FlexRow justifyContent={"space-between"} alignItems={"center"}>
-          <FlexRow justifyContent={"flex-start"} alignItems={"center"}>
+      <FlexColumn width={"100%"}>
+        <FlexRow
+          justifyContent={"space-between"}
+          alignItems={"center"}
+          width={"100%"}
+        >
+          <FlexRow
+            justifyContent={"flex-start"}
+            alignItems={"center"}
+            width={"100%"}
+          >
             <HelpOutlineOutlinedIcon />
             <Body1>Install app on iPhone</Body1>
           </FlexRow>
