@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { Geometry } from "geojson";
 import { GooglePlace } from "./TripDetails";
+import { fetchRouteData } from "../utils/fetchRouteData";
+import { LngLatLike } from "mapbox-gl";
 
 interface MapContext {
   isLoading: boolean;
@@ -8,20 +9,21 @@ interface MapContext {
   setSourcePlace: (place: GooglePlace) => void;
   destPlace: GooglePlace | undefined;
   setDestPlace: (place: GooglePlace) => void;
-  routeDetails: RouteDetails[];
-  addRoutes: (routes: RouteDetails[]) => void;
+  routeData: RouteData | undefined;
+  showRoutes: () => void;
   clearRoutes: () => void;
 }
 
-interface RouteDetails {
+export interface RouteData {
+  totalDistance: string;
+  totalTime: string;
+  waypoints: LngLatLike[];
   routes: {
-    duration: number;
-    distance: number;
-    geometry: Geometry;
-  }[];
-  waypoints: {
-    distance: number;
-    location: [number, number];
+    id: string;
+    geometry: {
+      type: "LineString";
+      coordinates: LngLatLike[];
+    };
   }[];
 }
 
@@ -33,19 +35,19 @@ export const MapProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [sourcePlace, setSourcePlace] = useState<GooglePlace | undefined>();
   const [destPlace, setDestPlace] = useState<GooglePlace | undefined>();
-  const [routeDetails, setRouteDetails] = useState<RouteDetails[]>([]);
+  const [routeData, setRouteData] = useState<RouteData | undefined>();
 
-  const addRoutes = (routes: RouteDetails[]) => {
+  const showRoutes = async () => {
     setIsLoading(true);
 
-    setTimeout(() => {
-      setRouteDetails(routes);
-      setIsLoading(false);
-    }, 1500);
+    const routeData = await fetchRouteData(sourcePlace!, destPlace!);
+
+    setRouteData(routeData);
+    setIsLoading(false);
   };
 
   const clearRoutes = () => {
-    setRouteDetails([]);
+    setRouteData(undefined);
   };
 
   return (
@@ -56,8 +58,8 @@ export const MapProvider = ({ children }: { children: ReactNode }) => {
         setSourcePlace,
         destPlace,
         setDestPlace,
-        routeDetails,
-        addRoutes,
+        routeData,
+        showRoutes,
         clearRoutes,
       }}
     >
