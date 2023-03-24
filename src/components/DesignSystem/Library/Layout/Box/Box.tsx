@@ -7,7 +7,7 @@ export interface BoxProps extends Omit<MuiBoxProps, keyof RestrictedBoxProps> {
   overflowX?: Properties["overflowX"];
   overflowY?: Properties["overflowY"];
 }
-export const Box = forwardRef<HTMLDivElement, BoxProps>(
+export const Box = forwardRef(
   ({ overflowX, overflowY, sx, ...props }: BoxProps, ref) => {
     const styles = useMemo(
       () => ({
