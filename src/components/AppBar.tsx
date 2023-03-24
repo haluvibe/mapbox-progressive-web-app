@@ -1,7 +1,13 @@
 import React, { FC } from "react";
 import { Toolbar, AppBar as MuiAppBar } from "@mui/material";
 import NVHRLogo from "./Icons/NVHRLogo";
-import { Flex, FlexRow, MenuIcon, RouterLink } from "./DesignSystem/Library";
+import {
+  Body1,
+  Flex,
+  FlexRow,
+  MenuIcon,
+  RouterLink,
+} from "./DesignSystem/Library";
 import { useTheme } from "@mui/material/styles";
 
 interface Props {}
@@ -24,6 +30,7 @@ const AppBar: FC<Props> = ({}: Props): JSX.Element => {
             <RouterLink>
               <NVHRLogo />
             </RouterLink>
+            <Body1>version 0.01</Body1>
           </Flex>
           <Flex width={"50%"} justifyContent={"flex-end"} alignItems={"center"}>
             <MenuIcon sx={{ color: "rgba(0, 0, 0, 0.54)" }} />
