@@ -1,25 +1,11 @@
-import React, {
-  Dispatch,
-  FC,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import {
-  ArrowBackIcon,
-  ContainedButton,
-  FlexColumn,
-  TextInput,
-} from "./DesignSystem/Library";
+import React, { FC, useRef, useState } from "react";
+import { ContainedButton, FlexColumn, TextInput } from "./DesignSystem/Library";
 import { Box } from "@mui/material";
 import { usePlacesWidget } from "react-google-autocomplete";
 import { useMapContext } from "./MapContext";
 
 interface Props {
   onShowRoutes: () => void;
-  onTripDetailsBack: () => void;
 }
 
 const apiKey = "AIzaSyDUxlHXSkqOCFZIqoFMqMqh_hggdPwLWrA";
@@ -38,6 +24,7 @@ export interface GooglePlace {
 }
 
 const TripDetails: FC<Props> = ({ onShowRoutes }: Props): JSX.Element => {
+  const ref = useRef<HTMLDivElement>(null);
   const mapContext = useMapContext();
   const [isTopAutocompleteOpen, setIsTopAutocompleteOpen] = useState(false);
   const [isBottomAutocompleteOpen, setIsBottomAutocompleteOpen] =

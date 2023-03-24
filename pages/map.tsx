@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useMemo, useRef, useState } from "react";
 import {
   Drawer,
   Body1,
@@ -21,12 +21,17 @@ const Map: FC<Props> = ({}: Props): JSX.Element => {
   const mapContext = useMapContext();
   const photoContext = usePhoto();
 
+  const refVehicleDrawer = useRef<HTMLDivElement>(null);
+  const refTripDrawer = useRef<HTMLDivElement>(null);
+  const refRouteDrawer = useRef<HTMLDivElement>(null);
+
   const theme = useTheme();
   const largeScreen = useMediaQuery(theme.breakpoints.up("md"));
   console.log("🚀 ~ file: map.tsx:17 ~ largeScreen:", largeScreen);
-  const [isVehicleDetailsDrawerOpen, setIsVehicleDetailsOpen] = useState(true);
+  const [isVehicleDetailsOpen, setIsVehicleDetailsOpen] = useState(true);
   const [isRouteDetailsOpen, setIsRouteDetailsOpen] = useState(false);
   const [isTripDetailsOpen, setIsTripDetailsOpen] = useState(false);
+  const [routeDrawerHeight, setRouteDrawerHeight] = useState(0);
   const router = useRouter();
 
   const onVehicleDetailsBack = () => {
@@ -55,16 +60,47 @@ const Map: FC<Props> = ({}: Props): JSX.Element => {
     setIsRouteDetailsOpen(false);
   };
 
+  useEffect(() => {
+    if (!refRouteDrawer.current) {
+      return;
+    }
+
+    const observer = new ResizeObserver((entry) =>
+      setRouteDrawerHeight(entry[entry.length - 1].contentRect.height)
+    );
+    observer.observe(refRouteDrawer.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [refRouteDrawer.current]);
+
+  const { paddingLeft, paddingBottom } = useMemo(
+    () => ({
+      paddingLeft:
+        (largeScreen && isVehicleDetailsOpen
+          ? refVehicleDrawer.current?.getBoundingClientRect().width
+          : 0) ?? 0,
+      paddingBottom:
+        (isTripDetailsOpen
+          ? refTripDrawer.current?.getBoundingClientRect().height
+          : routeDrawerHeight) ?? 0,
+    }),
+    [isVehicleDetailsOpen, isTripDetailsOpen, routeDrawerHeight]
+  );
+
   return (
     <Box
-      sx={{
+      style={{
         width: "100vw",
         height: "100vh",
       }}
     >
-      <MapboxMap />
+      <MapboxMap paddingBottom={paddingBottom} paddingLeft={paddingLeft} />
       <Drawer
-        open={isVehicleDetailsDrawerOpen}
+        ref={refVehicleDrawer}
+        variant={"persistent"}
+        open={isVehicleDetailsOpen}
         size={largeScreen ? "medium" : "full"}
         anchor={"left"}
         header={
@@ -87,6 +123,8 @@ const Map: FC<Props> = ({}: Props): JSX.Element => {
         <VehicleDetails onPlanTrip={onPlanTrip} />
       </Drawer>
       <Drawer
+        ref={refTripDrawer}
+        variant={"persistent"}
         open={isTripDetailsOpen}
         anchor={"bottom"}
         header={
@@ -105,12 +143,10 @@ const Map: FC<Props> = ({}: Props): JSX.Element => {
           </FlexRow>
         }
       >
-        <TripDetails
-          onTripDetailsBack={onTripDetailsBack}
-          onShowRoutes={onShowRoutes}
-        />
+        <TripDetails onShowRoutes={onShowRoutes} />
       </Drawer>
       <Drawer
+        ref={refRouteDrawer}
         variant={"persistent"}
         open={isRouteDetailsOpen}
         anchor={"bottom"}
