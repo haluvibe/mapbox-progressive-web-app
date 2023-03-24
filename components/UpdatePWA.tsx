@@ -8,20 +8,6 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 
-const isIOS = () => {
-  return (
-    [
-      "iPad Simulator",
-      "iPhone Simulator",
-      "iPod Simulator",
-      "iPad",
-      "iPhone",
-      "iPod",
-    ].includes(navigator.platform) ||
-    (navigator.userAgent.includes("Mac") && "ontouchend" in document)
-  );
-};
-
 const UpdatePWA: React.FC = () => {
   const [showBanner, setShowBanner] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
@@ -120,7 +106,7 @@ const UpdatePWA: React.FC = () => {
         </FlexRow>
       </FlexRow>
     </Box>
-  ) : !isInstalled && showBanner && !isIOS ? (
+  ) : !isInstalled && showBanner ? (
     <Box
       sx={{
         display: "block",
