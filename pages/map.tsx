@@ -4,22 +4,15 @@ import {
   Body1,
   ArrowBackIcon,
   FlexRow,
-  FlexColumn,
   CloseIcon,
-  TextInput,
-  ContainedButton,
 } from "../src/components/DesignSystem/Library";
 import VehicleDetails from "../components/VehicleDetails";
 import { useRouter } from "next/router";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
-import RouteDetailsCard from "../src/components/RouteDetailsCard";
 import MapboxMap from "../src/components/MapboxMap";
 import TripDetails from "../src/components/TripDetails";
 import RouteDetails from "../src/components/RouteDetails";
-import { routeData } from "../src/data/routeData";
 import { useMapContext } from "../src/components/MapContext";
-import { fetchRouteData } from "../src/utils/fetchRouteData";
-import IconContainer from "../src/components/Icons/IconContainer";
 import { usePhoto } from "../providers/PhotoProvider";
 
 interface Props {}
@@ -97,7 +90,19 @@ const Map: FC<Props> = ({}: Props): JSX.Element => {
         open={isTripDetailsOpen}
         anchor={"bottom"}
         header={
-          <ArrowBackIcon onClick={onTripDetailsBack} cursor={"pointer"} />
+          <FlexRow>
+            <ArrowBackIcon onClick={onTripDetailsBack} cursor={"pointer"} />
+            <Box
+              sx={{
+                height: "24px",
+                width: "24px",
+                ":hover": {
+                  backgroundColor: "rgba(0,0,0,0.1)",
+                },
+              }}
+              onClick={mapContext?.loadMockAddresses}
+            />
+          </FlexRow>
         }
       >
         <TripDetails

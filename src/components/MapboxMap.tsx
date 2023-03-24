@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import mapboxgl, { LngLatLike } from "mapbox-gl";
+import mapboxgl, { LngLatLike, Marker } from "mapbox-gl";
 import { Box } from "@mui/material";
 import { Geometry } from "geojson";
 import { useTheme } from "@mui/material/styles";
@@ -24,6 +24,7 @@ function MapboxMap() {
   const [zoom, setZoom] = useState(15);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
   const [layerIds, setLayerIds] = useState<string[]>([]);
+  const [markers, setMarkers] = useState<Marker[]>([]);
 
   useEffect(() => {
     setMap(
@@ -54,21 +55,28 @@ function MapboxMap() {
       return;
     }
 
-    if (mapContext?.routeData) {
-      // We need to keep track of the layer ids painted for cleanup
-      setLayerIds([mapContext.routeData.id]);
+    if (mapContext?.routeData?.length) {
       // Paint routes if they exist in context
-      addRoute(
-        mapContext.routeData.id,
-        mapContext.routeData.geometry as Geometry,
-        theme.palette.primary.light
-      );
-      // Add a marker for the start and end points
-      mapContext.routeData.waypoints.map((wp) => addMarker(wp));
-      map.setCenter(mapContext.routeData.waypoints[0]); // TODO: how to get correct center and zoom to fit whole route on map?
+      mapContext.routeData.map((route, index) => {
+        addRoute(
+          route.id,
+          route.geometry as Geometry,
+          index % 2 === 0
+            ? theme.palette.primary.light
+            : theme.palette.secondary.light
+        );
+        // We need to keep track of the layer ids rendered for cleanup
+        setLayerIds((prev) => {
+          prev.push(route.id);
+          return Array.from(prev);
+        });
+        // Add a marker for the start and end points
+        route.waypoints.map((wp) => addMarker(wp));
+      });
+
+      // Center map on first route start position
+      map.setCenter(mapContext.routeData[0].waypoints[0]);
     } else {
-      // We need to keep track of the layer ids painted for cleanup
-      setLayerIds([]);
       // Remove existing routes if there is nothing in the context
       layerIds.map((id) => {
         if (map.getSource(id)) {
@@ -76,6 +84,10 @@ function MapboxMap() {
           map.removeSource(id);
         }
       });
+      // Remove all markers from map
+      markers.forEach((marker) => marker.remove());
+      // Reset rendered layers
+      setLayerIds([]);
     }
   }, [isMapLoaded, mapContext]);
 
@@ -112,7 +124,14 @@ function MapboxMap() {
       return;
     }
 
-    new mapboxgl.Marker({ scale: 0.5 }).setLngLat(location).addTo(map);
+    const marker = new mapboxgl.Marker({ scale: 0.5 })
+      .setLngLat(location)
+      .addTo(map);
+
+    setMarkers((prev) => {
+      prev.push(marker);
+      return Array.from(prev);
+    });
   };
 
   return (

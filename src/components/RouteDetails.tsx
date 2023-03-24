@@ -38,15 +38,17 @@ const RouteDetails: FC<Props> = ({}: Props): JSX.Element => {
             </CardContent>
           </Card>
         )}
-        {!mapContext?.isLoading && mapContext?.routeData && (
-          <Box key={mapContext.routeData.id} sx={{ flexShrink: 0 }}>
-            <RouteDetailsCard
-              name={`Route 1`}
-              distance={`${mapContext.routeData.totalDistance} km`}
-              travelTime={`${mapContext.routeData.totalTime} mins`}
-            />
-          </Box>
-        )}
+        {!mapContext?.isLoading &&
+          mapContext?.routeData?.map((route, index) => (
+            <Box key={`Route ${index + 1}`} sx={{ flexShrink: 0 }}>
+              <RouteDetailsCard
+                name={`Route ${index + 1}`}
+                distance={`${route.totalDistance} km`}
+                travelTime={`${route.totalTime} mins`}
+                secondary={index % 2 === 0}
+              />
+            </Box>
+          ))}
       </>
     </FlexColumn>
   );

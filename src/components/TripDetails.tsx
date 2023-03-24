@@ -38,6 +38,7 @@ export interface GooglePlace {
 }
 
 const TripDetails: FC<Props> = ({ onShowRoutes }: Props): JSX.Element => {
+  const mapContext = useMapContext();
   const [isTopAutocompleteOpen, setIsTopAutocompleteOpen] = useState(false);
   const [isBottomAutocompleteOpen, setIsBottomAutocompleteOpen] =
     useState(false);
@@ -57,44 +58,81 @@ const TripDetails: FC<Props> = ({ onShowRoutes }: Props): JSX.Element => {
   });
 
   return (
-    <FlexColumn
-      gap={2}
-      minHeight={
-        isTopAutocompleteOpen ? 330 : isBottomAutocompleteOpen ? 400 : "auto"
-      }
-    >
-      <Box fontWeight={700}>Enter your trip details</Box>
-      <TextInput
-        ref={sourceRef}
-        label={"Enter source address"}
-        onChange={(event) => {
-          if (event.target.value) {
-            setIsTopAutocompleteOpen(true);
-          } else if (isTopAutocompleteOpen) {
-            setIsTopAutocompleteOpen(false);
-          }
+    <>
+      <FlexColumn
+        sx={{
+          visibility: mapContext?.isMockData ? "visible" : "hidden",
+          height: mapContext?.isMockData ? undefined : 0,
+          width: mapContext?.isMockData ? undefined : 0,
+          overflowY: mapContext?.isMockData ? undefined : "hidden",
         }}
-        onBlur={() => setIsTopAutocompleteOpen(false)}
-      />
-      <TextInput
-        ref={destRef}
-        label={"Enter destination address"}
-        onChange={(event) => {
-          if (event.target.value) {
-            setIsBottomAutocompleteOpen(true);
-          } else if (isTopAutocompleteOpen) {
-            setIsBottomAutocompleteOpen(false);
-          }
-        }}
-        onBlur={() => setIsBottomAutocompleteOpen(false)}
-      />
-      <ContainedButton
-        onClick={onShowRoutes}
-        disabled={!sourcePlace || !destPlace}
+        gap={2}
       >
-        Show routes
-      </ContainedButton>
-    </FlexColumn>
+        <Box fontWeight={700}>Enter your trip details</Box>
+        <TextInput
+          label={"Enter source address"}
+          value={mapContext?.sourcePlace?.formatted_address ?? ""}
+        />
+        <TextInput
+          label={"Enter destination address"}
+          value={mapContext?.destPlace?.formatted_address ?? ""}
+        />
+        <ContainedButton
+          onClick={onShowRoutes}
+          disabled={!sourcePlace || !destPlace}
+        >
+          Show routes
+        </ContainedButton>
+      </FlexColumn>
+      <FlexColumn
+        sx={{
+          visibility: mapContext?.isMockData ? "hidden" : "visible",
+          height: mapContext?.isMockData ? 0 : undefined,
+          width: mapContext?.isMockData ? 0 : undefined,
+          overflowY: mapContext?.isMockData ? "hidden" : undefined,
+          minHeight: mapContext?.isMockData
+            ? undefined
+            : isTopAutocompleteOpen
+            ? 280
+            : isBottomAutocompleteOpen
+            ? 350
+            : "auto",
+        }}
+        gap={2}
+      >
+        <Box fontWeight={700}>Enter your trip details</Box>
+        <TextInput
+          ref={sourceRef}
+          label={"Enter source address"}
+          onChange={(event) => {
+            if (event.target.value) {
+              setIsTopAutocompleteOpen(true);
+            } else if (isTopAutocompleteOpen) {
+              setIsTopAutocompleteOpen(false);
+            }
+          }}
+          onBlur={() => setIsTopAutocompleteOpen(false)}
+        />
+        <TextInput
+          ref={destRef}
+          label={"Enter destination address"}
+          onChange={(event) => {
+            if (event.target.value) {
+              setIsBottomAutocompleteOpen(true);
+            } else if (isTopAutocompleteOpen) {
+              setIsBottomAutocompleteOpen(false);
+            }
+          }}
+          onBlur={() => setIsBottomAutocompleteOpen(false)}
+        />
+        <ContainedButton
+          onClick={onShowRoutes}
+          disabled={!sourcePlace || !destPlace}
+        >
+          Show routes
+        </ContainedButton>
+      </FlexColumn>
+    </>
   );
 };
 
