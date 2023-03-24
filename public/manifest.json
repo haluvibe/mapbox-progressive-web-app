@@ -155,5 +155,14 @@
       "media": "(min-width: 1920px) and (orientation: landscape)"
       }
     ]
-  }
+  },
+  "screenshots" : [
+    {
+      "src": "/images/desktop_splash_1280.png",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "platform": "wide",
+      "label": "Homescreen of Awesome App"
+    }
+  ]
 }
