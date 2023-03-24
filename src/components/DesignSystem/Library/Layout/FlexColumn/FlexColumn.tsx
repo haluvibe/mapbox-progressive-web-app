@@ -3,7 +3,7 @@ import { Flex, FlexProps } from "../Flex";
 
 export type FlexColumnProps = Omit<FlexProps, "flexDirection">;
 
-export const FlexColumn = React.forwardRef(
+export const FlexColumn = React.forwardRef<HTMLDivElement, FlexColumnProps>(
   ({ flexWrap = "wrap", gap = 1, ...BoxProps }: FlexColumnProps, ref) => {
     return (
       <Flex

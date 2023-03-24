@@ -1,4 +1,4 @@
-import React, { ReactElement, useMemo } from "react";
+import React, { forwardRef, ReactElement, useEffect, useMemo } from "react";
 import { RestrictedVisualProps } from "../types";
 import {
   Box,
@@ -30,81 +30,87 @@ const topDownDimensions = {
   footerHeight: 60,
 };
 
-export const Drawer = ({
-  anchor,
-  header,
-  footer,
-  children,
-  size = "medium",
-  ...props
-}: DrawerProps) => {
-  console.log("🚀 ~ file: Drawer.tsx:35 ~ size:", size);
-  const { palette } = useTheme();
+export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
+  (
+    {
+      anchor,
+      header,
+      footer,
+      children,
+      size = "medium",
+      ...props
+    }: DrawerProps,
+    ref
+  ) => {
+    console.log("🚀 ~ file: Drawer.tsx:35 ~ size:", size);
+    const { palette } = useTheme();
 
-  const { dimensions, border, p } = useMemo(
-    () => ({
-      p: 2,
-      border: `1px solid ${palette.divider}`,
-      dimensions:
-        anchor === "top" || anchor === "bottom"
-          ? topDownDimensions
-          : drawerDimensionMap[size],
-    }),
-    [palette.divider, size]
-  );
+    const { dimensions, border, p } = useMemo(
+      () => ({
+        p: 2,
+        border: `1px solid ${palette.divider}`,
+        dimensions:
+          anchor === "top" || anchor === "bottom"
+            ? topDownDimensions
+            : drawerDimensionMap[size],
+      }),
+      [palette.divider, size]
+    );
 
-  return (
-    <MuiDrawer anchor={anchor} {...props}>
-      <FlexColumn
-        role={"presentation"}
-        flexWrap={"nowrap"}
-        gap={0}
-        sx={{
-          width: dimensions.width,
-          height: dimensions.height,
-          boxSizing: "border-box",
-        }}
-      >
-        {header && (
-          <Flex
-            alignItems={"center"}
-            sx={{
-              height: dimensions.headerHeight,
-              flexShrink: 0,
-              borderBottom: border,
-              p,
-            }}
-          >
-            {header}
-          </Flex>
-        )}
-        <Box
+    return (
+      <MuiDrawer anchor={anchor} {...props}>
+        <FlexColumn
+          ref={ref}
+          role={"presentation"}
+          flexWrap={"nowrap"}
+          gap={0}
           sx={{
-            overflowY: "auto",
-            height: "100%",
-            p,
+            width: dimensions.width,
+            height: dimensions.height,
+            boxSizing: "border-box",
           }}
         >
-          {children}
-        </Box>
-        {footer && (
-          <Flex
+          {header && (
+            <Flex
+              alignItems={"center"}
+              sx={{
+                height: dimensions.headerHeight,
+                flexShrink: 0,
+                borderBottom: border,
+                p,
+              }}
+            >
+              {header}
+            </Flex>
+          )}
+          <Box
             sx={{
-              width: "100%",
-              height: dimensions.footerHeight,
-              flexShrink: 0,
-              boxSizing: "border-box",
-              alignItems: "center",
-              borderTop: border,
+              overflowY: "auto",
+              height: "100%",
               p,
             }}
           >
-            {footer}
-          </Flex>
-        )}
-      </FlexColumn>
-    </MuiDrawer>
-  );
-};
+            {children}
+          </Box>
+          {footer && (
+            <Flex
+              sx={{
+                width: "100%",
+                height: dimensions.footerHeight,
+                flexShrink: 0,
+                boxSizing: "border-box",
+                alignItems: "center",
+                borderTop: border,
+                p,
+              }}
+            >
+              {footer}
+            </Flex>
+          )}
+        </FlexColumn>
+      </MuiDrawer>
+    );
+  }
+);
 
 Drawer.displayName = "Drawer";

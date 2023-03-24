@@ -19,7 +19,6 @@ interface MapContext {
 }
 
 export interface RouteData {
-  id: string;
   totalDistance: string;
   totalTime: string;
   waypoints: LngLatLike[];

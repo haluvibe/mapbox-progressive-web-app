@@ -3,13 +3,21 @@ import mapboxgl, { LngLatLike, Marker } from "mapbox-gl";
 import { Box } from "@mui/material";
 import { Geometry } from "geojson";
 import { useTheme } from "@mui/material/styles";
-import { useMapContext } from "./MapContext";
+import { RouteData, useMapContext } from "./MapContext";
 import { useDevices } from "../../providers/DevicesProvider";
+import center from "@turf/center";
+import { BBox2d, LineString } from "@turf/helpers/dist/js/lib/geojson";
+import bbox from "@turf/bbox";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYW1vcnRvbmkiLCJhIjoiY2xkczcyNHBuMW9sejN6cWV2dGl6bHE1aSJ9.tzzko4Wpw-wkg1hDQrW3hQ";
 
-function MapboxMap() {
+interface Props {
+  paddingBottom: number;
+  paddingLeft: number;
+}
+
+function MapboxMap({ paddingBottom, paddingLeft }: Props) {
   const mapContext = useMapContext();
   const devicesContext = useDevices();
   const theme = useTheme();
@@ -42,13 +50,28 @@ function MapboxMap() {
       return;
     }
 
-    map.on("load", () => setIsMapLoaded(true));
+    map.on("load", () => {
+      setIsMapLoaded(true);
+    });
     map.on("move", () => {
       setLng(Number(map.getCenter().lng.toFixed(4)));
       setLat(Number(map.getCenter().lat.toFixed(4)));
       setZoom(Number(map.getZoom().toFixed(2)));
     });
   }, [map]);
+
+  const fitToBounds = (routeData: RouteData[]) => {
+    if (!map) {
+      return;
+    }
+
+    const bounds = bbox({
+      type: "GeometryCollection",
+      geometries: routeData.map((route) => route.geometry as LineString),
+    }) as BBox2d;
+
+    map.fitBounds(bounds, { padding: 30 });
+  };
 
   useEffect(() => {
     if (!map || !isMapLoaded) {
@@ -58,24 +81,23 @@ function MapboxMap() {
     if (mapContext?.routeData?.length) {
       // Paint routes if they exist in context
       mapContext.routeData.map((route, index) => {
-        addRoute(
-          route.id,
-          route.geometry as Geometry,
+        const routeId = `route-${index}`;
+        const color =
           index % 2 === 0
             ? theme.palette.primary.light
-            : theme.palette.secondary.light
-        );
+            : theme.palette.secondary.light;
+        addRoute(routeId, route.geometry as Geometry, color);
         // We need to keep track of the layer ids rendered for cleanup
         setLayerIds((prev) => {
-          prev.push(route.id);
+          prev.push(routeId);
           return Array.from(prev);
         });
         // Add a marker for the start and end points
-        route.waypoints.map((wp) => addMarker(wp));
+        route.waypoints.map((wp, index) => addMarker(wp, color));
       });
 
-      // Center map on first route start position
-      map.setCenter(mapContext.routeData[0].waypoints[0]);
+      // Center map on routes bounding box
+      fitToBounds(mapContext.routeData);
     } else {
       // Remove existing routes if there is nothing in the context
       layerIds.map((id) => {
@@ -90,6 +112,15 @@ function MapboxMap() {
       setLayerIds([]);
     }
   }, [isMapLoaded, mapContext]);
+
+  useEffect(() => {
+    if (map) {
+      map.resize();
+      if (mapContext?.routeData?.length) {
+        fitToBounds(mapContext.routeData);
+      }
+    }
+  }, [paddingLeft, paddingBottom, mapContext?.routeData]);
 
   const addRoute = (id: string, coords: Geometry, color: string) => {
     if (!map) {
@@ -119,12 +150,12 @@ function MapboxMap() {
     });
   };
 
-  const addMarker = (location: LngLatLike) => {
+  const addMarker = (location: LngLatLike, color: string) => {
     if (!map) {
       return;
     }
 
-    const marker = new mapboxgl.Marker({ scale: 1 })
+    const marker = new mapboxgl.Marker({ scale: 1, color })
       .setLngLat(location)
       .addTo(map);
 
@@ -135,11 +166,13 @@ function MapboxMap() {
   };
 
   return (
-    <Box
-      sx={{ width: "100%", height: "100%" }}
-      id={"map-container"}
-      className="map-container"
-    />
+    <Box style={{ width: "100%", height: "100%", paddingBottom, paddingLeft }}>
+      <Box
+        style={{ width: "100%", height: "100%" }}
+        id={"map-container"}
+        className="map-container"
+      />
+    </Box>
   );
 }
 
