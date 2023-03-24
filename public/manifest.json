@@ -158,11 +158,25 @@
   },
   "screenshots" : [
     {
-      "src": "/images/desktop_splash_1280.png",
-      "sizes": "1280x720",
-      "type": "image/webp",
+      "src": "/images/1.png",
+      "sizes": "320x640",
+      "type": "image/png",
       "platform": "wide",
-      "label": "Homescreen of Awesome App"
+      "label": "Homescreen"
+    },
+    {
+      "src": "/images/2.png",
+      "sizes": "320x640",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Vehicle details"
+    },
+    {
+      "src": "/images/3.png",
+      "sizes": "320x640",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Route planner"
     }
   ]
 }
