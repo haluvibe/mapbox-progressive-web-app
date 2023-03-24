@@ -5,7 +5,6 @@ import { Geometry } from "geojson";
 import { useTheme } from "@mui/material/styles";
 import { RouteData, useMapContext } from "./MapContext";
 import { useDevices } from "../../providers/DevicesProvider";
-import center from "@turf/center";
 import { BBox2d, LineString } from "@turf/helpers/dist/js/lib/geojson";
 import bbox from "@turf/bbox";
 
