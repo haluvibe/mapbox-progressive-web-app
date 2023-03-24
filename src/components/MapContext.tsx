@@ -43,10 +43,7 @@ export const MapProvider = ({ children }: { children: ReactNode }) => {
     setIsMockData(false);
     setIsLoading(true);
 
-    if (
-      sourcePlace?.formatted_address ===
-      "3 Lardelli Dr, Ryde NSW 2112, Australia"
-    ) {
+    if (sourcePlace?.formatted_address.startsWith("68 Webb Dock Dr")) {
       setTimeout(() => {
         setRouteData([
           mapRouteData(mockRouteData[0]),
@@ -73,20 +70,20 @@ export const MapProvider = ({ children }: { children: ReactNode }) => {
 
   const loadMockAddresses = () => {
     setSourcePlace({
-      formatted_address: "3 Lardelli Dr, Ryde NSW 2112, Australia",
+      formatted_address: "68 Webb Dock Dr, Port Melbourne VIC 3207, Australia",
       geometry: {
         location: {
-          lat: () => -33.8179513,
-          lng: () => 151.1120396,
+          lat: () => -37.8372955,
+          lng: () => 144.913178,
         },
       },
     });
     setDestPlace({
-      formatted_address: "Victoria Rd, West Ryde NSW 2114, Australia",
+      formatted_address: "65-73 Mark St, North Melbourne VIC 3051, Australia",
       geometry: {
         location: {
-          lat: () => -33.8071556,
-          lng: () => 151.0845597,
+          lat: () => -37.7949867,
+          lng: () => 144.9371198,
         },
       },
     });
