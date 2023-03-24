@@ -113,7 +113,7 @@ function MapboxMap() {
       },
       paint: {
         "line-color": color,
-        "line-width": 3,
+        "line-width": 5,
         "line-opacity": 1,
       },
     });
@@ -124,7 +124,7 @@ function MapboxMap() {
       return;
     }
 
-    const marker = new mapboxgl.Marker({ scale: 0.5 })
+    const marker = new mapboxgl.Marker({ scale: 1 })
       .setLngLat(location)
       .addTo(map);
 
