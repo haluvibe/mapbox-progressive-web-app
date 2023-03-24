@@ -5,7 +5,8 @@ import { RouteData } from "../components/MapContext";
 
 export async function fetchRouteData(
   sourcePlace: GooglePlace,
-  destPlace: GooglePlace
+  destPlace: GooglePlace,
+  networkId?: number
 ): Promise<RouteData> {
   const response = await fetch(
     "https://fc-qa-master.azurewebsites.net/api/RoutePlanner",
@@ -32,7 +33,7 @@ export async function fetchRouteData(
           Oneway: true,
           "Through Traffic Prohibited": true,
         },
-        HeavyVehicleNetworkWKIDs: [63740002],
+        HeavyVehicleNetworkWKIDs: networkId ? [networkId] : [],
       }),
       headers: { "Content-Type": "application/json" },
     }
