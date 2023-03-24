@@ -30,7 +30,7 @@ const AppBar: FC<Props> = ({}: Props): JSX.Element => {
             <RouterLink>
               <NVHRLogo />
             </RouterLink>
-            <Body1>version 0.03</Body1>
+            <Body1>version 0.04</Body1>
           </Flex>
           <Flex width={"50%"} justifyContent={"flex-end"} alignItems={"center"}>
             <MenuIcon sx={{ color: "rgba(0, 0, 0, 0.54)" }} />

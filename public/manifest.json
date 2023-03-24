@@ -7,7 +7,7 @@
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
-  "description": "An example of using mapbox and camera integration inside a progressive web app",
+  "description": "An example of using mapbox and camera integration inside a progressive web app.",
   "icons": [
     {
       "src": "icons/icon-72x72.png",
