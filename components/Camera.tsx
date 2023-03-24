@@ -104,6 +104,7 @@ const Camera: React.FC<CameraProps> = () => {
     return (
       <FlexRow>
         <FlexColumn
+          onClick={handleClickOpen}
           sx={(theme) => ({
             alignItems: "center",
             borderStyle: "dashed",
@@ -111,6 +112,7 @@ const Camera: React.FC<CameraProps> = () => {
             borderRadius: `${theme.shape.borderRadius}px`,
             width: "100%",
             p: 2,
+            cursor: "pointer",
             // ...(error && {
             //   backgroundColor: theme.palette.error.shades?.['4p'],
             //   borderColor: theme.palette.error.main,

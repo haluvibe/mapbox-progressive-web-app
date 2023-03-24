@@ -45,6 +45,7 @@ export default function Home() {
         >
           <WelcomeCard name={"Jerome Bell"} />
           <ButtonCard
+            cursorPointer
             bgColor={primaryAlpha}
             onClick={() => router.push("/map")}
             title={"Vehicle trip planner"}

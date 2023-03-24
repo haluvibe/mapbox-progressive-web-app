@@ -1,11 +1,5 @@
 import React, { FC, ReactNode } from "react";
-import {
-  Card,
-  Flex,
-  FlexColumn,
-  FlexRow,
-  CardContent,
-} from "./DesignSystem/Library";
+import { Card, Flex, CardContent } from "./DesignSystem/Library";
 import { Box } from "@mui/material";
 
 interface Props {
@@ -15,6 +9,7 @@ interface Props {
   endIcon?: ReactNode;
   onClick?: () => void;
   bgColor?: string;
+  cursorPointer?: boolean;
 }
 
 const ButtonCard: FC<Props> = ({
@@ -24,10 +19,11 @@ const ButtonCard: FC<Props> = ({
   onClick,
   startIcon,
   endIcon,
+  cursorPointer,
 }: Props): JSX.Element => {
   return (
     <Card bgColor={bgColor} onClick={onClick}>
-      <Flex>
+      <Flex sx={cursorPointer ? { cursor: "pointer" } : {}}>
         <CardContent padding={"SM"} spacing={"SM"}>
           {startIcon}
           <Box
