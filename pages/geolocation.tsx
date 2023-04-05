@@ -67,7 +67,6 @@ const RequestGeolocationPermission: NextPage = () => {
             Allow
           </ContainedButton>
           <OutlinedButton
-            disabled={isLoading}
             onClick={async () => {
               router.push("/home");
             }}
